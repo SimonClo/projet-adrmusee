@@ -2,12 +2,14 @@ package fr.musee.adr.adrmusee;
 
 public class Product {
     private static int cpt = 0;
-    public enum ProductList {pizzaReine, jambonBeurre, patesBolognaise}
-    private ProductList name;
+    private String name;
     private int id;
+    private float price;
+    private int quantity;
 
-    Product(ProductList name){
+    Product(String name, float price){
         this.name = name;
+        this.price = price;
         cpt++;
         this.id = cpt;
 
@@ -17,11 +19,27 @@ public class Product {
         return id;
     }
 
-    public ProductList getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(ProductList name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
