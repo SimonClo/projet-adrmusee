@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="match-parent"
+        android:id="@+id/email"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email"
@@ -17,8 +17,8 @@
         tools:layout_editor_absoluteY="222dp" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
+        android:id="@+id/mdp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Mot de passe"
@@ -27,12 +27,20 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/seconnecter"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Se connecter"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="365dp" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Créer un compte"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="428dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -54,4 +62,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/AdRLogo"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="40dp" />
 </android.support.constraint.ConstraintLayout>
