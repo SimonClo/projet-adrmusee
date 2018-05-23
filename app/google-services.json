@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "85839931688",
+    "firebase_url": "https://adrmusee.firebaseio.com",
+    "project_id": "adrmusee",
+    "storage_bucket": "adrmusee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85839931688:android:1e5abc866ee2d5ba",
+        "android_client_info": {
+          "package_name": "fr.mhammed.adrmusee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85839931688-57h92epo978a56j0fsvmfblvuqd00dev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.mhammed.adrmusee",
+            "certificate_hash": "a7a820055e98dbeb7ac7171793dc7f688a43700c"
+          }
+        },
+        {
+          "client_id": "85839931688-foshm78u43v9tgterk0h6rgkm055m8ot.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "85839931688-foshm78u43v9tgterk0h6rgkm055m8ot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyIUW04fCyk0Et2-_-0FuwsszOhiyntvM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85839931688-foshm78u43v9tgterk0h6rgkm055m8ot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85839931688:android:d0cbe78d7226d2a2",
+        "android_client_info": {
+          "package_name": "fr.musee.adr.adrmusee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85839931688-vbdcnts80n33rj98ldjutkbp9r0jtu9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.musee.adr.adrmusee",
+            "certificate_hash": "a7a820055e98dbeb7ac7171793dc7f688a43700c"
+          }
+        },
+        {
+          "client_id": "85839931688-foshm78u43v9tgterk0h6rgkm055m8ot.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "85839931688-foshm78u43v9tgterk0h6rgkm055m8ot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyIUW04fCyk0Et2-_-0FuwsszOhiyntvM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85839931688-foshm78u43v9tgterk0h6rgkm055m8ot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
