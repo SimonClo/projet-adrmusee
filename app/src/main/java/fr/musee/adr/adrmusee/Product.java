@@ -1,6 +1,8 @@
 package fr.musee.adr.adrmusee;
 
 public class Product {
+    // Classe représentant les produits en vente (un objet = un type de produit)
+
     private static int cpt = 0;
     private String name;
     private int id;

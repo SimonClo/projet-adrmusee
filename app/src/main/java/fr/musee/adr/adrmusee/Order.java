@@ -11,11 +11,19 @@ public class Order {
     private String customerName; //a changer quand la classe User sera faite
     private float totalCost;
 
+    private boolean paid;
+    private boolean ready;
+
+    private static ArrayList<Order> allOrdersList;
+
     Order(String customerName){
         this.customerName = customerName;
         cpt++;
         id =cpt;
-        this.totalCost = 0;
+        totalCost = 0;
+        paid = false;
+        ready = false;
+        allOrdersList.add(this);
     }
 
     public void addProduct(Product product){
@@ -33,6 +41,9 @@ public class Order {
 
     }
 
+
+    //// Getters and setters ////
+
     public int getId() {
         return id;
     }
@@ -45,7 +56,27 @@ public class Order {
         return customerName;
     }
 
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
     public float getTotalCost() {
         return totalCost;
+    }
+
+    public static ArrayList<Order> getAllOrdersList() {
+        return allOrdersList;
     }
 }
