@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText Email;
     private EditText Password;
     private Button Seconnecter;
-    private Button SignUp;
+    private Button Signup;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -33,9 +33,18 @@ public class MainActivity extends AppCompatActivity {
         Email = (EditText) findViewById(R.id.Email);
         Password = (EditText) findViewById(R.id.MotDePasse);
         Seconnecter = (Button) findViewById(R.id.SeConnecter);
-        SignUp = (Button) findViewById(R.id.SignUp2);
+        Signup = (Button) findViewById(R.id.SignUp2);
 
         mAuth = FirebaseAuth.getInstance();
+
+        Signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -53,13 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 startSignIn();
             }
         });
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
+
     }
     public void onStart(){
         super.onStart();
