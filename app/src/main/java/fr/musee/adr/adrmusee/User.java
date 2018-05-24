@@ -7,5 +7,16 @@ public class User {
     private String emailAddress;
     private String name;
     private String password;
-    private 
+
+    User(String name, String emailAddress, String password){
+        this.name = name;
+        this.emailAddress = emailAddress;
+        this.password = password;
+        cpt++;
+        id = cpt;
+    }
+
+    public void createOrder(){
+        new Order(this.name);
+    }
 }
