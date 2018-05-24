@@ -1,8 +1,47 @@
 package fr.musee.adr.adrmusee;
 
 public class Product {
+    // Classe représentant les produits en vente (un objet = un type de produit)
 
+    private static int cpt = 0;
+    private String name;
     private int id;
-    public static enum ProductList {"Pizza Reine", "Jambon Beurre", "Pates Bolognaise"}
-    private ProductList name;
+    private float price;
+    private int quantity;
+
+    Product(String name, float price){
+        this.name = name;
+        this.price = price;
+        cpt++;
+        this.id = cpt;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
