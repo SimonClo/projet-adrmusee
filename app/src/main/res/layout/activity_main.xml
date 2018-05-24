@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/adrlogo"
+        android:paddingTop="50dp"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="40dp" />
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,7 +27,7 @@
         tools:layout_editor_absoluteY="222dp" />
 
     <EditText
-        android:id="@+id/mdp"
+        android:id="@+id/MotDePasse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,18 +37,24 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <Button
-        android:id="@+id/seconnecter"
+        android:id="@+id/SeConnecter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Se connecter"
+        android:textColor="@color/blanc"
+        android:background="@color/bleugeadr"
+        android:layout_marginVertical="5dp"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="365dp" />
 
     <Button
-        android:id="@+id/signup"
+        android:id="@+id/SignUp2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Créer un compte"
+        android:textColor="@color/blanc"
+        android:background="@color/bleugeadr"
+        android:layout_marginVertical="5dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="428dp" />
 
@@ -63,11 +79,5 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/AdRLogo"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="40dp" />
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

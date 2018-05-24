@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="rougeadr">#EF0D23</color>
     <color name="bleugeadr">#3895C9</color>
+    <color name="blanc">#FFF</color>
 </resources>
