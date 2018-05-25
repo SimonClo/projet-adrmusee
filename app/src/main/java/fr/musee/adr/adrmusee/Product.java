@@ -6,12 +6,15 @@ public class Product {
     private static int cpt = 0;
     private String name;
     private int id;
+    private String producttype;
     private float price;
     private int quantity;
+    public String image;
 
-    Product(String name, float price){
+    Product(String name, float price, String image){
         this.name = name;
         this.price = price;
+        this.image = image;
         cpt++;
         this.id = cpt;
 
@@ -33,9 +36,15 @@ public class Product {
         return price;
     }
 
+    public String getimage() {
+        return image;
+    }
+
     public void setPrice(float price) {
         this.price = price;
     }
+
+    public String getProducttype() { return producttype}
 
     public int getQuantity() {
         return quantity;
@@ -43,5 +52,9 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setProductImage(String link_image) {
+        this.image = link_image;
     }
 }

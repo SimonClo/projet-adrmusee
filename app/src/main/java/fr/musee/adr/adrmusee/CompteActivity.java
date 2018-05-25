@@ -13,7 +13,6 @@ public class CompteActivity extends AppCompatActivity implements BottomNavigatio
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compte);
-
     loadFragment(new AccueilFragment());
 
     BottomNavigationView menu_nav = findViewById(R.id.Navbot);
