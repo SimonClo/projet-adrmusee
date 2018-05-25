@@ -9,10 +9,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:paddingTop="50dp"
+        android:src="@drawable/adrlogo"
         tools:layout_editor_absoluteX="92dp"
         tools:layout_editor_absoluteY="40dp" />
     <EditText

@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static java.lang.Boolean.FALSE;
+
 public class SignUpActivity extends AppCompatActivity {
     private EditText inputname;
     private EditText inputemail;
@@ -28,6 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog mProgress;
     private DatabaseReference mDatabase;
+    private boolean isadmin;
 
 
     @Override
@@ -43,6 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        isadmin= FALSE;
 
         ButtonSignup.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         String email = inputemail.getText().toString();
         final String phone = inputphone.getText().toString();
         String password = inputpassword.getText().toString();
+        final Boolean admin= isadmin;
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(phone)){
             mProgress.setMessage("Signing up ...");
@@ -66,10 +71,11 @@ public class SignUpActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         String user_id = mAuth.getCurrentUser().getUid();
-                        DatabaseReference curent_user_db = mDatabase.child(user_id);
+                        DatabaseReference current_user_db = mDatabase.child(user_id);
 
-                        curent_user_db.child("name").setValue(name);
-                        curent_user_db.child("phone").setValue(phone);
+                        current_user_db.child("name").setValue(name);
+                        current_user_db.child("phone").setValue(phone);
+                        current_user_db.child("isadmin").setValue(admin);
                         mProgress.dismiss();
 
                         Intent mainIntent = new Intent(SignUpActivity.this, MainActivity.class);
@@ -80,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             });
         }else {
-            Toast.makeText(SignUpActivity.this, "Un ou plusieurs champs sont vides", Toast.LENGTH_LONG).show();
+            Toast.makeText(SignUpActivity.this, "Plusieurs champs sont vides ou votre mail est déjà inscrit", Toast.LENGTH_LONG).show();
         }
     }
 }
