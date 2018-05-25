@@ -41,6 +41,16 @@ public class Order {
 
     }
 
+    public void delProduct(Product product){
+
+        if (orderList.contains(product)){
+            orderList.remove(product);
+            int q = product.getQuantity();
+            product.setQuantity(q++);
+        }
+
+    }
+
 
     //// Getters and setters ////
 
