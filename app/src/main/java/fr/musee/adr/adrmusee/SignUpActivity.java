@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import static java.lang.Boolean.FALSE;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -27,11 +28,11 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText inputpassword;
     private Button ButtonSignup;
 
+
     private FirebaseAuth mAuth;
     private ProgressDialog mProgress;
     private DatabaseReference mDatabase;
-    private boolean isadmin;
-
+    private String isadmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,21 +47,25 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        isadmin= FALSE;
+        isadmin = "0";
 
-        ButtonSignup.setOnClickListener(new View.OnClickListener(){
+
+        ButtonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startSignUp();
+                    startSignUp();
             }
         });
+
     }
+
+
     private void startSignUp(){
         final String name = inputname.getText().toString();
         String email = inputemail.getText().toString();
         final String phone = inputphone.getText().toString();
         String password = inputpassword.getText().toString();
-        final Boolean admin= isadmin;
+        final String admin= isadmin;
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(phone)){
             mProgress.setMessage("Signing up ...");
@@ -82,11 +87,14 @@ public class SignUpActivity extends AppCompatActivity {
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
 
+                    }else{
+                        mProgress.dismiss();
+                        Toast.makeText(SignUpActivity.this, "Ce mail existe déjà", Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }else {
-            Toast.makeText(SignUpActivity.this, "Plusieurs champs sont vides ou votre mail est déjà inscrit", Toast.LENGTH_LONG).show();
+            Toast.makeText(SignUpActivity.this, "Plusieurs champs sont vides", Toast.LENGTH_LONG).show();
         }
     }
 }
