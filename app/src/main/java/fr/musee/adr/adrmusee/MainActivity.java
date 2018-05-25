@@ -14,6 +14,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class MainActivity extends AppCompatActivity {
     private EditText Email;
@@ -22,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private Button Signup;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-
+    private DatabaseReference mDatabase;
+    private String isAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +54,32 @@ public class MainActivity extends AppCompatActivity {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
                 if (firebaseAuth.getCurrentUser() != null) {
+                    String user_id = mAuth.getCurrentUser().getUid();
+                    String user = mAuth.getCurrentUser().getEmail();
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                    mDatabase.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                isAdmin=dataSnapshot.child("isadmin").getValue().toString();
+                            }
+                        }
 
-                    startActivity(new Intent(MainActivity.this, CompteActivity.class));
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                }
+                        }
+                    });
+                    if(isAdmin=="1"){
+                        startActivity(new Intent(MainActivity.this, AdminActivity.class));
+                        Toast.makeText(MainActivity.this, isAdmin + user, Toast.LENGTH_LONG).show();
+
+                }else{
+                        startActivity(new Intent(MainActivity.this, CompteActivity.class));
+                        Toast.makeText(MainActivity.this, isAdmin + user, Toast.LENGTH_LONG).show();
+                }}
             }
         };
 

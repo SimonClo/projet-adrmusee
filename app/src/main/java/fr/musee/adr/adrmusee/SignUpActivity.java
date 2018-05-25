@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog mProgress;
     private DatabaseReference mDatabase;
-    private boolean isadmin;
+    private String isadmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        isadmin = FALSE;
+        isadmin = "0";
 
 
         ButtonSignup.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
         String email = inputemail.getText().toString();
         final String phone = inputphone.getText().toString();
         String password = inputpassword.getText().toString();
-        final Boolean admin= isadmin;
+        final String admin= isadmin;
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(phone)){
             mProgress.setMessage("Signing up ...");

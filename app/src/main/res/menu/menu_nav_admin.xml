@@ -16,4 +16,9 @@
         android:title="Profil"
         android:icon="@drawable/ic_settings"
         />
+    <item
+        android:id="@+id/navigation_admin"
+        android:title="Admin"
+        android:icon="@drawable/ic_build"
+        />
 </menu>

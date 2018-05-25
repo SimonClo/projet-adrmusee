@@ -37,6 +37,10 @@ public class AdminActivity extends AppCompatActivity implements BottomNavigation
                 fragment = new ProfilFragment();
                 break;
 
+            case R.id.navigation_admin:
+                fragment = new ProfilFragment();
+                break;
+
         }
 
         return loadFragment(fragment);
@@ -47,7 +51,7 @@ public class AdminActivity extends AppCompatActivity implements BottomNavigation
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
+                    .replace(R.id.fragment_container_admin, fragment)
                     .commit();
             return true;
         }

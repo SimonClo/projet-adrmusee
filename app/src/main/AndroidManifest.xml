@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".CompteActivity" />
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".AdminActivity" />
     </application>
 
 </manifest>
