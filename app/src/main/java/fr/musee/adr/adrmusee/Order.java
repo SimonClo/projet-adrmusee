@@ -1,56 +1,36 @@
 package fr.musee.adr.adrmusee;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Order {
     // Classe contenant les commandes des clients
 
     private int id;
     private static int cpt = 0;
-    private ArrayList<Product> orderList;
-    private String customerName; //a changer quand la classe User sera faite
+    private ArrayList<String> orderList;
+    private String customerId; //a changer quand la classe User sera faite
     private float totalCost;
+    private Date date;
 
-    private boolean paid;
     private boolean ready;
 
     private static ArrayList<Order> allOrdersList;
 
-    Order(String customerName){
-        this.customerName = customerName;
-        cpt++;
-        id =cpt;
-        totalCost = 0;
-        paid = false;
-        ready = false;
-        allOrdersList.add(this);
-    }
+    Order(String customerId, Basket basket){
 
-    public void addProduct(Product product){
+        if (basket.isPaid() == true) {
+            this.customerId = customerId;
+            cpt++;
+            id = cpt;
+            totalCost = 0;
+            ready = false;
+            allOrdersList.add(this);
+            date = new Date();
 
-        int q = product.getQuantity();
-
-        if (q > 0) {
-            orderList.add(product);
-            product.setQuantity(q - 1);
-            this.totalCost += product.getPrice();
+            orderList = basket.getListProducts();
         }
-        else{
-            System.out.println("Ce produit n'est plus disponible");
-        }
-
     }
-
-    public void delProduct(Product product){
-
-        if (orderList.contains(product)){
-            orderList.remove(product);
-            int q = product.getQuantity();
-            product.setQuantity(q++);
-        }
-
-    }
-
 
     //// Getters and setters ////
 
@@ -58,20 +38,12 @@ public class Order {
         return id;
     }
 
-    public ArrayList<Product> getOrderList() {
+    public ArrayList<String> getOrderList() {
         return orderList;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public boolean isPaid() {
-        return paid;
-    }
-
-    public void setPaid(boolean paid) {
-        this.paid = paid;
+    public String getCustomerId() {
+        return customerId;
     }
 
     public boolean isReady() {
