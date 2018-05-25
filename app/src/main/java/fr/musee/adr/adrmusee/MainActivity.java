@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button Signup;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference mDatabase;
-    private String isAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,32 +52,9 @@ public class MainActivity extends AppCompatActivity {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
                 if (firebaseAuth.getCurrentUser() != null) {
-                    String user_id = mAuth.getCurrentUser().getUid();
-                    String user = mAuth.getCurrentUser().getEmail();
-                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-                    mDatabase.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                isAdmin=dataSnapshot.child("isadmin").getValue().toString();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                    if(isAdmin=="1"){
-                        startActivity(new Intent(MainActivity.this, AdminActivity.class));
-                        Toast.makeText(MainActivity.this, isAdmin + user, Toast.LENGTH_LONG).show();
-
-                }else{
                         startActivity(new Intent(MainActivity.this, CompteActivity.class));
-                        Toast.makeText(MainActivity.this, isAdmin + user, Toast.LENGTH_LONG).show();
-                }}
+                }
             }
         };
 

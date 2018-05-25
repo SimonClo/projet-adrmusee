@@ -7,6 +7,11 @@
         android:icon="@drawable/ic_home"
     />
     <item
+        android:id="@+id/navigation_panier"
+        android:title="Panier"
+        android:icon="@drawable/ic_panier"
+        />
+    <item
         android:id="@+id/navigation_commandes"
         android:title="Mes commandes"
         android:icon="@drawable/ic_resa"

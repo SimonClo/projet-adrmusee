@@ -2,7 +2,5 @@
     <string name="app_name">Le Musée AdR</string>
     <string name="accueil">Accueil</string>
     <string name="title_activity_nav">NavActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Accueil</string>
 </resources>
