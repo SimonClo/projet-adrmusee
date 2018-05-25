@@ -9,8 +9,8 @@ public class Order {
     private int id;
     private static int cpt = 0;
     private ArrayList<String> orderList;
-    private String customerId; //a changer quand la classe User sera faite
-    private float totalCost;
+    private String customerId;
+    private double totalCost;
     private Date date;
 
     private boolean ready;
@@ -23,10 +23,10 @@ public class Order {
             this.customerId = customerId;
             cpt++;
             id = cpt;
-            totalCost = 0;
             ready = false;
             allOrdersList.add(this);
             date = new Date();
+            totalCost = basket.getTotalPrice();
 
             orderList = basket.getListProducts();
         }
@@ -54,7 +54,7 @@ public class Order {
         this.ready = ready;
     }
 
-    public float getTotalCost() {
+    public double getTotalCost() {
         return totalCost;
     }
 

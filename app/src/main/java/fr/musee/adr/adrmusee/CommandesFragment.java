@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,6 +14,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import fr.musee.adr.adrmusee.adapter.OrderAdapter;
 
 
 public class CommandesFragment extends Fragment {
@@ -36,6 +40,10 @@ public class CommandesFragment extends Fragment {
 
              }
          });
+
+         ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
+         commandsListView.setAdapter(new OrderAdapter(this, commands));
+
          return view;
     }
 }
