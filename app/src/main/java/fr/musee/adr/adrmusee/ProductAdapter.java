@@ -1,6 +1,7 @@
 package fr.musee.adr.adrmusee;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.androidquery.AQuery;
-
-import java.net.URL;
 import java.util.ArrayList;
 
 public class ProductAdapter extends BaseAdapter {
@@ -55,9 +53,9 @@ public class ProductAdapter extends BaseAdapter {
         ImageView ProductImage= view.findViewById(R.id.product_image);
 
         ProductName.setText(product_name);
-        ProductPrice.setText(String product_price);
+        ProductPrice.setText(String.valueOf(product_price+"€"));
         if (!currentproduct.getimage().equals("")) {
-            ProductImage.setImageURI(URI product_image);
+            ProductImage.setImageURI(Uri.parse(product_image));
         } else {
             ProductImage.setImageResource(R.mipmap.ic_launcher);
         }

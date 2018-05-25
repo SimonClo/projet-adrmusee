@@ -44,7 +44,7 @@ public class Product {
         this.price = price;
     }
 
-    public String getProducttype() { return producttype}
+    public String getProducttype() { return producttype; }
 
     public int getQuantity() {
         return quantity;
