@@ -30,18 +30,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Signup = (Button) findViewById(R.id.sign_up);
         Email = (EditText) findViewById(R.id.Email);
         Password = (EditText) findViewById(R.id.MotDePasse);
         Seconnecter = (Button) findViewById(R.id.SeConnecter);
-        Signup = (Button) findViewById(R.id.SignUp2);
+
 
         mAuth = FirebaseAuth.getInstance();
 
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-                MainActivity.this.startActivity(intent);
+                startView();
             }
         });
 
@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
     public void onStart(){
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+    }
+    public void startView(){
+        Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+        startActivity(intent);
     }
     public void startSignIn() {
         String email = Email.getText().toString();

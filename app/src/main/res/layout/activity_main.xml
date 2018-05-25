@@ -47,7 +47,7 @@
         tools:layout_editor_absoluteY="365dp" />
 
     <Button
-        android:id="@+id/SignUp2"
+        android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Créer un compte"

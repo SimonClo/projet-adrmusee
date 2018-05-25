@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ProgressDialog mProgress;
     private DatabaseReference mDatabase;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         inputemail = (EditText) findViewById(R.id.inputemail);
         inputphone = (EditText) findViewById(R.id.inputphone);
         inputpassword = (EditText) findViewById(R.id.inputpassword);
-
+        ButtonSignup = (Button) findViewById(R.id.buttonsignup);
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
