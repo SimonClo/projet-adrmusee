@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Basket {
 
     private String userId;
-    private ArrayList<String> listProducts = new ArrayList<String>();
+    private ArrayList<Product> listProducts = new ArrayList<Product>();
     private double totalPrice = 0;
 
     private boolean paid;
@@ -14,19 +14,32 @@ public class Basket {
         this.userId = userId;
     }
 
+    public void delProduct(Product product){
+        listProducts.remove(product);
+    }
+
     public String getUserId() {
         return userId;
     }
 
-    public ArrayList<String> getListProducts() {
+    public ArrayList<Product> getListProducts() {
         return listProducts;
     }
 
     public double getTotalPrice() {
+
+        for (int i=0; i < listProducts.size(); i++){
+            totalPrice += listProducts.get(i).getPrice();
+        }
+
         return totalPrice;
     }
 
     public boolean isPaid() {
         return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }

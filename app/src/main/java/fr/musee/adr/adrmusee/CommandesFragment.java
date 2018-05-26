@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,15 +16,21 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fr.musee.adr.adrmusee.adapter.OrderAdapter;
+
 
 public class CommandesFragment extends Fragment {
     @Nullable
 
     private DatabaseReference mDatabase;
     private ArrayList commands;
+    private String user_id;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          View view = inflater.inflate(R.layout.activity_commandes, null);
+
+        user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
          mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Commands");
          mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
@@ -37,10 +45,10 @@ public class CommandesFragment extends Fragment {
              }
          });
 
-        // ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
-        // commandsListView.setAdapter(new OrderAdapter(this.getActivity(), commands));
+        ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
+        commandsListView.setAdapter(new OrderAdapter(this.getActivity(), commands));
 
-         return view;
+        return view;
     }
 }
 
