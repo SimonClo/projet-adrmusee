@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Basket {
 
     private String userId;
-    private ArrayList<String> listProducts = new ArrayList<String>();
+    private ArrayList<Product> listProducts = new ArrayList<Product>();
     private double totalPrice = 0;
 
     private boolean paid;
@@ -18,7 +18,7 @@ public class Basket {
         return userId;
     }
 
-    public ArrayList<String> getListProducts() {
+    public ArrayList<Product> getListProducts() {
         return listProducts;
     }
 

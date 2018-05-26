@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.musee.adr.adrmusee.Order;
+import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.R;
 
 public class OrderAdapter extends BaseAdapter {
@@ -48,7 +49,7 @@ public class OrderAdapter extends BaseAdapter {
         Order currentOrder = getItem(position);
 
         double orderCost = currentOrder.getTotalCost();
-        ArrayList<String> orderProducts = currentOrder.getOrderList();
+        ArrayList<Product> orderProducts = currentOrder.getOrderList();
         Date orderDate = currentOrder.getDate();
         boolean orderReady = currentOrder.isReady();
 
@@ -56,7 +57,7 @@ public class OrderAdapter extends BaseAdapter {
         String orderProductsString = new String();
 
         for (int i = 0; i < orderProducts.size(); i++){
-            orderProductsString += orderProducts.get(i) + "\n";
+            orderProductsString += orderProducts.get(i).getName() + "\n";
 
         }
 

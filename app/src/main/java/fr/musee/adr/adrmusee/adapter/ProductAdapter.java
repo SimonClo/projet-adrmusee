@@ -1,4 +1,4 @@
-package fr.musee.adr.adrmusee;
+package fr.musee.adr.adrmusee.adapter;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import fr.musee.adr.adrmusee.Product;
+import fr.musee.adr.adrmusee.R;
 
 public class ProductAdapter extends BaseAdapter {
     private Context context;

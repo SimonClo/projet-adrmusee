@@ -8,7 +8,7 @@ public class Order {
 
     private int id;
     private static int cpt = 0;
-    private ArrayList<String> orderList;
+    private ArrayList<Product> orderList;
     private String customerId;
     private double totalCost;
     private Date date;
@@ -38,7 +38,7 @@ public class Order {
         return id;
     }
 
-    public ArrayList<String> getOrderList() {
+    public ArrayList<Product> getOrderList() {
         return orderList;
     }
 
