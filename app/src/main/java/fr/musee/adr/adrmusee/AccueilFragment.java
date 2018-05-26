@@ -39,7 +39,7 @@ public class AccueilFragment extends Fragment {
 
             }
         });
-        ListView list_products=(ListView) getView().findViewById(R.id.list_products);
+        ListView list_products=(ListView) view.findViewById(R.id.list_products);
         list_products.setAdapter(new ProductAdapter(this.getActivity(), Productlist));
         return view;
 

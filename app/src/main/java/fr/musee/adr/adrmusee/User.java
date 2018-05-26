@@ -16,15 +16,15 @@ public class User {
         id = cpt;
     }
 
-    public void createOrder(){
-        new Order(this.name);
-    }
+    //public void createOrder(){
+    //    new Order(this.name);
+    //}
 
     public void addProduct(Order order, Product product){
-        order.addProduct(product);
+      //  order.addProduct(product);
     }
 
     public void delProduct(Order order, Product product){
-        order.delProduct(product);
+       // order.delProduct(product);
     }
 }
