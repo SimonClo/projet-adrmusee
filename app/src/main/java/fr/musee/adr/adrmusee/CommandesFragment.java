@@ -48,7 +48,7 @@ public class CommandesFragment extends Fragment {
         ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
         commandsListView.setAdapter(new OrderAdapter(this.getActivity(), commands));
 
-         return view;
+        return view;
     }
 }
 

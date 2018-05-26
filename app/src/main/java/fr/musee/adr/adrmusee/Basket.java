@@ -14,6 +14,10 @@ public class Basket {
         this.userId = userId;
     }
 
+    public void delProduct(Product product){
+        listProducts.remove(product);
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -23,10 +27,19 @@ public class Basket {
     }
 
     public double getTotalPrice() {
+
+        for (int i=0; i < listProducts.size(); i++){
+            totalPrice += listProducts.get(i).getPrice();
+        }
+
         return totalPrice;
     }
 
     public boolean isPaid() {
         return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }
