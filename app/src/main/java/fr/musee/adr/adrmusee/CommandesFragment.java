@@ -29,9 +29,9 @@ public class CommandesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          View view = inflater.inflate(R.layout.activity_commandes, null);
 
-        user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+         user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Commands");
+         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Commands");
          mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
