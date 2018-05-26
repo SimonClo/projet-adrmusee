@@ -12,7 +12,9 @@ import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 
-    /**
+import fr.musee.adr.adrmusee.adapter.ProductAdapter;
+
+/**
      * Created by Admin on 5/26/2017.
      */
 
@@ -23,7 +25,7 @@ import java.util.ArrayList;
         ListView listView;
         Firebase firebase;
         ArrayList<Product> productlist= new ArrayList<>();
-        ProductAdapter ProductAdapter;
+        fr.musee.adr.adrmusee.adapter.ProductAdapter ProductAdapter;
 
 
         public  FirebaseClient(Context c, String DB_URL, ListView listView)

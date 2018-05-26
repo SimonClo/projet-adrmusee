@@ -16,7 +16,8 @@
     <ListView
         android:id="@+id/listview_basket"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+    ></ListView>
 
     <RelativeLayout
         android:layout_width="wrap_content"
