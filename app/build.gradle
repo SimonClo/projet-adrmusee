@@ -32,5 +32,6 @@ dependencies {
     compile 'com.google.firebase:firebase-database:15.0.0'
     compile 'com.firebase:firebase-client-android:2.4.0'
     compile 'com.android.support:design:27.0.0'
+    compile 'com.squareup.picasso:picasso:2.5.0'
 }
 apply plugin: 'com.google.gms.google-services'

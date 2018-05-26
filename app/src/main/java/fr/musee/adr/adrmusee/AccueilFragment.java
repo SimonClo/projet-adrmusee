@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 
 public class AccueilFragment extends Fragment {
-    final static  String DB_URL= "https://adrmusee.firebaseio.com/";
+    final static  String DB_URL= "https://adrmusee.firebaseio.com/Product";
     ListView listView;
     FirebaseClient firebaseClient;
     @Nullable

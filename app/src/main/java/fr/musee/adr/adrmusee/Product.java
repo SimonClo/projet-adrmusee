@@ -3,26 +3,26 @@ package fr.musee.adr.adrmusee;
 public class Product {
     // Classe représentant les produits en vente (un objet = un type de produit)
 
-    private static int cpt = 0;
+    //private static int cpt = 0;
     private String name;
-    private int id;
+    //private int id;
     private String producttype;
     private double price;
-    private int quantity;
+    //private int quantity;
     public String image;
 
-    Product(String name, double price, String image){
+    Product(String name, float price, String image){
         this.name = name;
         this.price = price;
         this.image = image;
-        cpt++;
-        this.id = cpt;
+        //cpt++;
+        //this.id = cpt;
 
     }
 
-    public int getId() {
-        return id;
-    }
+    //public int getId() {
+    //   return id;
+    //}
 
     public String getName() {
         return name;
@@ -44,17 +44,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getProducttype() { return producttype; }
+    //public String getProducttype() { return producttype; }
 
-    public int getQuantity() {
-        return quantity;
-    }
+    //public int getQuantity() {return quantity;}
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    //public void setQuantity(int quantity) {
+    //   this.quantity = quantity;
+    //}
 
     public void setProductImage(String link_image) {
         this.image = link_image;
+    }
+
+    public Product() {
+
     }
 }
