@@ -7,11 +7,11 @@ public class Product {
     private String name;
     private int id;
     private String producttype;
-    private float price;
+    private double price;
     private int quantity;
     public String image;
 
-    Product(String name, float price, String image){
+    Product(String name, double price, String image){
         this.name = name;
         this.price = price;
         this.image = image;
@@ -32,7 +32,7 @@ public class Product {
         this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -40,7 +40,7 @@ public class Product {
         return image;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
