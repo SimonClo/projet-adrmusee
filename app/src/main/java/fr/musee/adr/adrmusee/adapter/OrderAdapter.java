@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import fr.musee.adr.adrmusee.Order;
@@ -40,7 +43,36 @@ public class OrderAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         convertView = inflater.inflate(R.layout.adapter_command, null);
+        Order currentOrder = getItem(position);
+
+        double orderCost = currentOrder.getTotalCost();
+        ArrayList<String> orderProducts = currentOrder.getOrderList();
+        Date orderDate = currentOrder.getDate();
+        boolean orderReady = currentOrder.isReady();
+
+        TextView orderProductsView = convertView.findViewById(R.id.command_name);
+        String orderProductsString = new String();
+
+        for (int i = 0; i < orderProducts.size(); i++){
+            orderProductsString += orderProducts.get(i) + "\n";
+
+        }
+
+        orderProductsView.setText(orderProductsString);
+
+        TextView orderCostView = convertView.findViewById(R.id.command_price);
+        orderCostView.setText(orderCost + "€");
+
+        TextView orderReadyView = convertView.findViewById(R.id.command_ready);
+        if (orderReady == true){
+            orderReadyView.setText("Prêt");
+        }
+        else{
+            orderReadyView.setText("En cours de préparation");
+        }
+
         return convertView;
     }
 }

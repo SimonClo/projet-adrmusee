@@ -3,4 +3,6 @@
     <string name="accueil">Accueil</string>
     <string name="title_activity_nav">NavActivity</string>
     <string name="title_home">Accueil</string>
+    <string name="command_default_name">Commande</string>
+    <string name="command_default_price">0€</string>
 </resources>

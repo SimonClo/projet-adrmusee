@@ -61,4 +61,8 @@ public class Order {
     public static ArrayList<Order> getAllOrdersList() {
         return allOrdersList;
     }
+
+    public Date getDate() {
+        return date;
+    }
 }

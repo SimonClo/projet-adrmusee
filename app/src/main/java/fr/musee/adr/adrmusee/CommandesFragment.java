@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,15 +24,19 @@ public class CommandesFragment extends Fragment {
     @Nullable
 
     private DatabaseReference mDatabase;
-    private ArrayList commands;
+    private ArrayList<Order> commands;
+    private String user_id;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          View view = inflater.inflate(R.layout.activity_commandes, null);
+
+         user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
          mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Commands");
          mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
-                 commands = new ArrayList();
+                 commands = new ArrayList<>();
 
              }
 
@@ -42,7 +47,7 @@ public class CommandesFragment extends Fragment {
          });
 
          ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
-         commandsListView.setAdapter(new OrderAdapter(this, commands));
+         commandsListView.setAdapter(new OrderAdapter(this.getActivity(), commands));
 
          return view;
     }
