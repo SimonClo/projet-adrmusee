@@ -71,10 +71,6 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
             productlist.clear();
             for(DataSnapshot ds : dataSnapshot.getChildren()){
                 Product product= new Product();
-                String id_product = (String) ds.getKey();
-                //product.setName(ds.getValue(Product.class).getName());
-                //product.setProductImage(ds.getValue(Product.class).getimage());
-                //product.setPrice(ds.getValue(Product.class).getPrice());
                 product.setName((String) ds.child("name").getValue());
                 product.setProductImage((String) ds.child("image").getValue());
                 product.setPrice((double) ds.child("price").getValue());
