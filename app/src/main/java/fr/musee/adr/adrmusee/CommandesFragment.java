@@ -20,10 +20,12 @@ import fr.musee.adr.adrmusee.adapter.OrderAdapter;
 
 
 public class CommandesFragment extends Fragment {
+    // Classe d'affichage de la liste des commandes du client connecté
+
     @Nullable
 
     private DatabaseReference mDatabase;
-    private ArrayList<Order> commands;
+    private ArrayList<Order> userOrders;
     private String user_id;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,13 +33,16 @@ public class CommandesFragment extends Fragment {
 
          user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Commands");
+         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders");
          mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
                  for(DataSnapshot ds: dataSnapshot.getChildren()){
                      Order currentOrder = new Order();
-                     currentOrder.setCustomerId(user_id);
+                     currentOrder.setOrderList(ds.getValue(Order.class).getOrderList());
+                     currentOrder.setTotalCost(ds.getValue(Order.class).getTotalCost());
+                     userOrders.add(currentOrder);
+
                  }
 
              }
@@ -49,7 +54,7 @@ public class CommandesFragment extends Fragment {
          });
 
         ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
-        commandsListView.setAdapter(new OrderAdapter(this.getActivity(), commands));
+        commandsListView.setAdapter(new OrderAdapter(this.getActivity(), userOrders));
 
         return view;
     }

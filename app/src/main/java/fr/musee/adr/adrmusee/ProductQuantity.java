@@ -1,6 +1,7 @@
 package fr.musee.adr.adrmusee;
 
 public class ProductQuantity {
+    // Classe permettant de créer des listes de couples Produit/Quantité
 
     Product product;
     int quantity;

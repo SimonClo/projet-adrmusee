@@ -22,10 +22,16 @@ import fr.musee.adr.adrmusee.adapter.OrderAdapter;
 public class PanierFragment extends Fragment {
 
     private Basket basket;
-
+    private FirebaseAuth mAuth;
+    private String user_id;
+    private DatabaseReference mDatabase;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        mAuth = FirebaseAuth.getInstance();
+        user_id= mAuth.getCurrentUser().getUid();
+        basket = new Basket(user_id);
 
         View view=inflater.inflate(R.layout.activity_panier, null);
 
@@ -42,6 +48,9 @@ public class PanierFragment extends Fragment {
             public void onClick(View v) {
                 // The user just clicked
                 basket.setPaid(true);
+                Order newOrder = new Order(basket);
+                newOrder.saveOrder();
+
 
             }
 
