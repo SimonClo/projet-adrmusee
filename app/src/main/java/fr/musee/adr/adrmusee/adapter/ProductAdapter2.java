@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import fr.musee.adr.adrmusee.AccueilFragment;
 import fr.musee.adr.adrmusee.CompteActivity;
 import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.R;
@@ -43,7 +45,7 @@ public class ProductAdapter2 extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertview, ViewGroup viewGroup) {
+    public View getView(int i, View convertview, final ViewGroup viewGroup) {
 
         if (inflater== null)
         {
@@ -54,15 +56,17 @@ public class ProductAdapter2 extends BaseAdapter {
 
         }
 
+        final Product currentProduct = productlist.get(i);
         MyHolder holder= new MyHolder(convertview);
-        holder.nameTxt.setText(productlist.get(i).getName());
-        holder.price.setText(Double.toString(productlist.get(i).getPrice())+"€");
-        PicassoClient.downloadimg(c,productlist.get(i).getimage(),holder.img);
+        holder.nameTxt.setText(currentProduct.getName());
+        holder.price.setText(Double.toString(currentProduct.getPrice())+"€");
+        PicassoClient.downloadimg(c,currentProduct.getimage(),holder.img);
 
         convertview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CompteActivity.basket
+                CompteActivity.userbasket.addProduct(currentProduct);
+                Toast.makeText(viewGroup.getContext(), currentProduct.getName() + " ajouté(e) au panier", Toast.LENGTH_SHORT).show();
             }
         });
 

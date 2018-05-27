@@ -47,7 +47,7 @@ public class CommandesFragment extends Fragment {
                          list.add(ds.child("orderList").getValue(ProductQuantity.class));
                      }
 
-                     Order currentOrder = new Order((Long) ds.child("totalCost").getValue(), list);
+                     Order currentOrder = new Order(((Long) ds.child("totalCost").getValue()).doubleValue(), list);
                      userOrders.add(currentOrder);
 
                  }

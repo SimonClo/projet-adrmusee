@@ -33,6 +33,7 @@ public class Order {
             totalCost = basket.getTotalPrice();
 
             orderList = basket.listProductQuantity();
+            basket.clearBasket();
 
         }
         else{

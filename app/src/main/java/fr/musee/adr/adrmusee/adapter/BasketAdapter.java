@@ -43,33 +43,26 @@ public class BasketAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.adapter_panier, null);
+
+        if (inflater== null) {
+        inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+        if(convertView==null) {
+            convertView= inflater.inflate(R.layout.adapter_product,parent,false);
+        }
+
         final ProductQuantity currentProduct = getItem(position);
+        MyHolderBasket holder= new MyHolderBasket(convertView);
 
         double productPrice = currentProduct.getProduct().getPrice();
         String productName = currentProduct.getProduct().getName();
         int productQuantity = currentProduct.getQuantity();
 
-        TextView productPriceView = convertView.findViewById(R.id.productBasket_price);
-        productPriceView.setText(productPrice + " €");
-        TextView productNameView = convertView.findViewById(R.id.productBasket_name);
-        productNameView.setText(productName);
-        TextView productQuantityView = convertView.findViewById(R.id.productBasket_quantity);
-        productQuantityView.setText("x" + productQuantity);
+        holder.price.setText(Double.toString(productPrice) + " €");
+        holder.product.setText(productName);
+        holder.quantity.setText("x" + Integer.toString(productQuantity));
 
-        final Button delButton = convertView.findViewById(R.id.delButton);
-        delButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // The user just clicked
-                int n = currentProduct.getQuantity();
-                currentProduct.setQuantity(n-1);
-                if (currentProduct.getQuantity() == 0) {
-                    basket.delProduct(currentProduct.getProduct());
-                }
 
-            }
-        });
 
 
         return convertView;

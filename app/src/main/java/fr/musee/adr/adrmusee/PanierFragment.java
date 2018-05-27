@@ -31,7 +31,7 @@ public class PanierFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
-        basket = new Basket(user_id);
+        basket = CompteActivity.userbasket;
 
         View view=inflater.inflate(R.layout.activity_panier, null);
 
