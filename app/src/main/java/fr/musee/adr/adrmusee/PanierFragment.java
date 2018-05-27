@@ -25,6 +25,9 @@ public class PanierFragment extends Fragment {
     private FirebaseAuth mAuth;
     private String user_id;
     private DatabaseReference mDatabase;
+    final static  String DB_URL= "https://adrmusee.firebaseio.com/Product";
+    ListView listView;
+    FirebaseClient firebaseClient;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,12 +37,12 @@ public class PanierFragment extends Fragment {
         basket = CompteActivity.userbasket;
 
         View view=inflater.inflate(R.layout.activity_panier, null);
+        listView=(ListView) view.findViewById(R.id.listview_basket);
+        firebaseClient= new FirebaseClient(this.getActivity(), DB_URL,listView);
+        firebaseClient.refreshdata();
 
         TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
         totalPriceView.setText(basket.getTotalPrice() + " €");
-
-        ListView basketListView = (ListView) view.findViewById(R.id.listview_basket);
-        basketListView.setAdapter(new BasketAdapter(this.getActivity(), basket));
 
         Button payButton = view.findViewById(R.id.buttonPay);
 

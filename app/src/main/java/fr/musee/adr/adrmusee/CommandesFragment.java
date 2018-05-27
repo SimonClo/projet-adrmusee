@@ -28,41 +28,20 @@ public class CommandesFragment extends Fragment {
     private DatabaseReference mDatabase;
     private ArrayList<Order> userOrders;
     private String user_id;
+    private ListView listView;
+    FirebaseClient firebaseClient;
+    private FirebaseAuth mAuth;
+
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         View view = inflater.inflate(R.layout.activity_commandes, null);
+        View view = inflater.inflate(R.layout.activity_commandes, null);
+        mAuth = FirebaseAuth.getInstance();
+        user_id= mAuth.getCurrentUser().getUid();
+        final String DB_URL= "https://adrmusee.firebaseio.com/"+ user_id.("Orders");
 
-         user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-         userOrders = new ArrayList<>();
-
-         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders");
-         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                     ArrayList<ProductQuantity> list = new ArrayList<>();
-
-                     for(int i=0; i<3; i++){
-                         list.add(ds.child("orderList").getValue(ProductQuantity.class));
-                     }
-
-                     Order currentOrder = new Order(((Long) ds.child("totalCost").getValue()).doubleValue(), list);
-                     userOrders.add(currentOrder);
-
-                 }
-
-             }
-
-             @Override
-             public void onCancelled(DatabaseError databaseError) {
-
-             }
-         });
-
-        ListView commandsListView = (ListView) view.findViewById(R.id.listview_commands);
-        commandsListView.setAdapter(new OrderAdapter(this.getActivity(), userOrders));
-
+        listView=(ListView) view.findViewById(R.id.listview_commands);
+        firebaseClient= new FirebaseClient(this.getActivity(), DB_URL,listView);
+        firebaseClient.refreshdata();
         return view;
     }
 }

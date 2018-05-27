@@ -46,12 +46,20 @@ public class OrderAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        convertView = inflater.inflate(R.layout.adapter_command, null);
-        Order currentOrder = getItem(position);
+        if (inflater== null)
+        {
+            inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        } if(convertView==null)
+        {
+            convertView= inflater.inflate(R.layout.adapter_product,parent,false);
 
-        double orderCost = currentOrder.getTotalCost();
+        }
+
+        Order currentOrder = getItem(position);
+        MyHolderOrder holder= new MyHolderOrder(convertView);
+        holder.price.setText(Double.toString(currentOrder.getTotalCost())+"€");
+
         ArrayList<ProductQuantity> orderProducts = currentOrder.getOrderList();
-        boolean orderReady = currentOrder.isReady();
 
         TextView orderProductsView = convertView.findViewById(R.id.command_name);
         String orderProductsString = new String();
@@ -61,17 +69,14 @@ public class OrderAdapter extends BaseAdapter {
 
         }
 
-        orderProductsView.setText(orderProductsString);
+        holder.listProduct.setText(orderProductsString);
 
-        TextView orderCostView = convertView.findViewById(R.id.command_price);
-        orderCostView.setText(orderCost + "€");
-
-        TextView orderReadyView = convertView.findViewById(R.id.command_ready);
+        boolean orderReady = currentOrder.isReady();
         if (orderReady == true){
-            orderReadyView.setText("Prêt");
+            holder.ready.setText("Prêt");
         }
         else{
-            orderReadyView.setText("En cours de préparation");
+            holder.ready.setText("En cours de préparation");
         }
 
         return convertView;

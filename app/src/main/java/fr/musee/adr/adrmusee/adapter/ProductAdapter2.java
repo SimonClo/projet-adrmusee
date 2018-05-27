@@ -35,7 +35,7 @@ public class ProductAdapter2 extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Product getItem(int i) {
         return productlist.get(i);
     }
 
@@ -56,7 +56,7 @@ public class ProductAdapter2 extends BaseAdapter {
 
         }
 
-        final Product currentProduct = productlist.get(i);
+        final Product currentProduct = getItem(i);
         MyHolder holder= new MyHolder(convertview);
         holder.nameTxt.setText(currentProduct.getName());
         holder.price.setText(Double.toString(currentProduct.getPrice())+"€");
