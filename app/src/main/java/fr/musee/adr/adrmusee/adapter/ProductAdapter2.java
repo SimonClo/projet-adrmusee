@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
-import fr.musee.adr.adrmusee.AccueilFragment;
 import fr.musee.adr.adrmusee.CompteActivity;
 import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.R;
@@ -18,6 +21,8 @@ public class ProductAdapter2 extends BaseAdapter {
     Context c;
     ArrayList<Product> productlist;
     LayoutInflater inflater;
+    DatabaseReference mDatabase;
+    FirebaseAuth mAuth;
 
 
     public ProductAdapter2(Context c, ArrayList<Product> productlist) {
@@ -55,6 +60,9 @@ public class ProductAdapter2 extends BaseAdapter {
             convertview= inflater.inflate(R.layout.adapter_product,viewGroup,false);
 
         }
+        mAuth = FirebaseAuth.getInstance();
+        String user_id = mAuth.getCurrentUser().getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
         final Product currentProduct = getItem(i);
         MyHolder holder= new MyHolder(convertview);
@@ -67,6 +75,8 @@ public class ProductAdapter2 extends BaseAdapter {
             public void onClick(View v) {
                 CompteActivity.userbasket.addProduct(currentProduct);
                 Toast.makeText(viewGroup.getContext(), currentProduct.getName() + " ajouté(e) au panier", Toast.LENGTH_SHORT).show();
+                mDatabase.child("userbasket").removeValue();
+                mDatabase.child("userbasket").setValue(CompteActivity.userbasket);
             }
         });
 

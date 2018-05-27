@@ -1,5 +1,7 @@
 package fr.musee.adr.adrmusee;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class Product {
     // Classe représentant les produits en vente (un objet = un type de produit)
 
@@ -10,7 +12,7 @@ public class Product {
     private double price;
     //private int quantity;
     public String image;
-
+    private DatabaseReference mDatabase;
 
     Product(String name, float price, String image,String id){
         this.name = name;
@@ -21,7 +23,9 @@ public class Product {
 
     }
 
-    public String getId() {return id; }
+    public String getId() {
+        return id;
+        }
 
     public String getName() {
         return name;
