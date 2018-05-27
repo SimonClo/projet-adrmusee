@@ -1,18 +1,19 @@
 package fr.musee.adr.adrmusee;
 
 import android.content.Context;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
-import fr.musee.adr.adrmusee.adapter.ProductAdapter;
+
+import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
+
 
 /**
      * Created by Admin on 5/26/2017.
@@ -25,7 +26,8 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter;
         ListView listView;
         Firebase firebase;
         ArrayList<Product> productlist= new ArrayList<>();
-        fr.musee.adr.adrmusee.adapter.ProductAdapter ProductAdapter;
+        fr.musee.adr.adrmusee.adapter.ProductAdapter2 ProductAdapter2;
+
 
 
         public  FirebaseClient(Context c, String DB_URL, ListView listView)
@@ -37,9 +39,10 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter;
 
             Firebase.setAndroidContext(c);
             firebase=new Firebase(DB_URL);
+
         }
 
-        public  void savedata(String name,double price, String url)
+        public  void savedata(String name,float price, String url)
         {
             Product product= new Product(name,price,url);
             product.setName(name);
@@ -47,60 +50,49 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter;
             product.setPrice(price);
 
 
-            firebase.child("Product").push().setValue(product);
+            firebase.push().setValue(product);
 
 
         }
 
         public  void refreshdata()
         {
-            firebase.addChildEventListener(new ChildEventListener() {
+            firebase.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                public void onDataChange(DataSnapshot dataSnapshot) {
                     getupdates(dataSnapshot);
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    getupdates(dataSnapshot);
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
                 }
 
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
 
                 }
-            });
-        }
+            });}
 
         public void getupdates(DataSnapshot dataSnapshot){
 
             productlist.clear();
-
-            for(DataSnapshot ds :dataSnapshot.getChildren()){
-                Product product= new Product("",1,"");
-                product.setName(ds.getValue(Product.class).getName());
-                product.setProductImage(ds.getValue(Product.class).getimage());
+            for(DataSnapshot ds : dataSnapshot.getChildren()){
+                Product product= new Product();
+                String id_product = (String) ds.getKey();
+                //product.setName(ds.getValue(Product.class).getName());
+                //product.setProductImage(ds.getValue(Product.class).getimage());
+                //product.setPrice(ds.getValue(Product.class).getPrice());
+                product.setName((String) ds.child("name").getValue());
+                product.setProductImage((String) ds.child("image").getValue());
+                product.setPrice((double) ds.child("price").getValue());
                 productlist.add(product);
 
             }
             if(productlist.size()>0)
             {
-                ProductAdapter=new ProductAdapter(c, productlist);
-                listView.setAdapter((ListAdapter) ProductAdapter);
+                ProductAdapter2=new ProductAdapter2(c, productlist);
+                listView.setAdapter(ProductAdapter2);
             }else
             {
                 Toast.makeText(c, "Base de données vide", Toast.LENGTH_SHORT).show();
             }
         }
+
     }
 
