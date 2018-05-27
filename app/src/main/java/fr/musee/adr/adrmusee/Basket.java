@@ -6,13 +6,26 @@ public class Basket {
     // Classe représentant le panier de l'utilisateur
 
     private String userId;
-    private ArrayList<Product> listProducts = new ArrayList<Product>();
-    private double totalPrice = 0;
+    private ArrayList<Product> listProducts;
+    private double totalPrice = 0.0;
 
     private boolean paid;
 
     public Basket(String userId){
         this.userId = userId;
+        listProducts = new ArrayList<>();
+    }
+
+    public Basket(){
+
+        listProducts = new ArrayList<>();
+        totalPrice = 0.0;
+
+    }
+
+    public void clearBasket(){
+        listProducts.clear();
+        totalPrice = 0.0;
     }
 
 
@@ -69,11 +82,13 @@ public class Basket {
 
     public double getTotalPrice() {
 
+        this.totalPrice = 0.0;
+
         for (int i=0; i < listProducts.size(); i++){
-            totalPrice += listProducts.get(i).getPrice();
+            this.totalPrice += listProducts.get(i).getPrice();
         }
 
-        return totalPrice;
+        return this.totalPrice;
     }
 
     public boolean isPaid() {

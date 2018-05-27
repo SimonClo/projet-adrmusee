@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -40,9 +41,13 @@ public class CommandesFragment extends Fragment {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
                  for(DataSnapshot ds: dataSnapshot.getChildren()){
-                     Order currentOrder = new Order();
-                     currentOrder.setOrderList(ds.getValue(Order.class).getOrderList());
-                     currentOrder.setTotalCost(ds.getValue(Order.class).getTotalCost());
+                     ArrayList<ProductQuantity> list = new ArrayList<>();
+
+                     for(int i=0; i<3; i++){
+                         list.add(ds.child("orderList").getValue(ProductQuantity.class));
+                     }
+
+                     Order currentOrder = new Order(((Long) ds.child("totalCost").getValue()).doubleValue(), list);
                      userOrders.add(currentOrder);
 
                  }

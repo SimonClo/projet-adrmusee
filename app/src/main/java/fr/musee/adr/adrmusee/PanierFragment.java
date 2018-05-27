@@ -31,14 +31,14 @@ public class PanierFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
-        basket = new Basket(user_id);
+        basket = CompteActivity.userbasket;
 
         View view=inflater.inflate(R.layout.activity_panier, null);
 
         TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
         totalPriceView.setText(basket.getTotalPrice() + " €");
 
-        ListView basketListView = (ListView) getView().findViewById(R.id.listview_basket);
+        ListView basketListView = (ListView) view.findViewById(R.id.listview_basket);
         basketListView.setAdapter(new BasketAdapter(this.getActivity(), basket));
 
         Button payButton = view.findViewById(R.id.buttonPay);
