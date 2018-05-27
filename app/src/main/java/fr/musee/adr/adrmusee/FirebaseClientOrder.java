@@ -12,14 +12,13 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 
 import fr.musee.adr.adrmusee.adapter.OrderAdapter;
-import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
 
-public class FirebaseClientOrder {Context c;
+public class FirebaseClientOrder {
+    Context c;
     String DB_URL;
     ListView listView;
     Firebase firebase;
     ArrayList<Order> orderlist= new ArrayList<>();
-    fr.musee.adr.adrmusee.adapter.ProductAdapter2 ProductAdapter2;
 
 
 
@@ -62,22 +61,21 @@ public class FirebaseClientOrder {Context c;
 
         orderlist.clear();
         for(DataSnapshot ds : dataSnapshot.getChildren()){
-            Order order = new Order();
+
             ArrayList<ProductQuantity> list = new ArrayList<>();
 
-            for(int i=0; i<3; i++){
-                list.add(ds.child("orderList").getValue(ProductQuantity.class));
+            for(int i=0; i<10; i++){
+                System.out.println(ds.child("orderList").child(String.valueOf(i)).getValue(ProductQuantity.class));
+                list.add(ds.child("orderList").child(String.valueOf(i)).getValue(ProductQuantity.class));
             }
 
-            Order currentOrder = new Order(((Long) ds.child("totalCost").getValue()).doubleValue(), list);
+            Order currentOrder = new Order(Double.parseDouble(ds.child("totalCost").getValue().toString()), list);
             orderlist.add(currentOrder);
-            order.setTotalCost((double) ds.child("totalCost").getValue());
-            orderlist.add(order);
 
         }
         if(orderlist.size()>0)
         {
-            OrderAdapter o =new OrderAdapter(c, orderlist);
+            OrderAdapter o = new OrderAdapter(c, orderlist);
             listView.setAdapter(o);
         }else
         {
