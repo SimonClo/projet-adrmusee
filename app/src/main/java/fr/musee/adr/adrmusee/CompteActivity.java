@@ -1,10 +1,10 @@
 package fr.musee.adr.adrmusee;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 public class CompteActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -15,11 +15,11 @@ public class CompteActivity extends AppCompatActivity implements BottomNavigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compte);
     loadFragment(new AccueilFragment());
-
     userbasket = new Basket();
     BottomNavigationView menu_nav = findViewById(R.id.Navbot);
         menu_nav.setOnNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
