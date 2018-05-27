@@ -6,13 +6,18 @@ public class Basket {
     // Classe représentant le panier de l'utilisateur
 
     private String userId;
-    private ArrayList<Product> listProducts = new ArrayList<Product>();
+    private ArrayList<Product> listProducts;
     private double totalPrice = 0;
 
     private boolean paid;
 
     public Basket(String userId){
         this.userId = userId;
+        listProducts = new ArrayList<>();
+    }
+    
+    public Basket(){
+
     }
 
 

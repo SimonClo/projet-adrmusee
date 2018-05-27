@@ -38,7 +38,7 @@ public class PanierFragment extends Fragment {
         TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
         totalPriceView.setText(basket.getTotalPrice() + " €");
 
-        ListView basketListView = (ListView) getView().findViewById(R.id.listview_basket);
+        ListView basketListView = (ListView) view.findViewById(R.id.listview_basket);
         basketListView.setAdapter(new BasketAdapter(this.getActivity(), basket));
 
         Button payButton = view.findViewById(R.id.buttonPay);

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
+import fr.musee.adr.adrmusee.CompteActivity;
 import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.R;
 
@@ -58,7 +59,12 @@ public class ProductAdapter2 extends BaseAdapter {
         holder.price.setText(Double.toString(productlist.get(i).getPrice())+"€");
         PicassoClient.downloadimg(c,productlist.get(i).getimage(),holder.img);
 
-
+        convertview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CompteActivity.basket
+            }
+        });
 
         return convertview;
     }

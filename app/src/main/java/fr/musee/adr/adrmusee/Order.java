@@ -44,13 +44,18 @@ public class Order {
 
     }
 
+    public Order(double totalCost, ArrayList<ProductQuantity> orderList){
+        this.totalCost = totalCost;
+        this.orderList = orderList;
+    }
+
 
     // Ajout de la commande à la db
     public void saveOrder(){
 
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(user_id).child("Orders");
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders");
         mDatabase.push().setValue(this);
     }
 
