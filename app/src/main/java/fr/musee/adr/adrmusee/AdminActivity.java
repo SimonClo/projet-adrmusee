@@ -30,7 +30,7 @@ public class AdminActivity extends AppCompatActivity implements BottomNavigation
                 break;
 
             case R.id.navigation_panier:
-                fragment = new AccueilFragment();
+                fragment = new PanierFragment();
                 break;
 
             case R.id.navigation_commandes:
@@ -42,7 +42,7 @@ public class AdminActivity extends AppCompatActivity implements BottomNavigation
                 break;
 
             case R.id.navigation_admin:
-                fragment = new ProfilFragment();
+                fragment = new AdminFragment();
                 break;
 
         }
