@@ -48,7 +48,7 @@ public class BasketAdapter extends BaseAdapter{
         inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if(convertView==null) {
-            convertView= inflater.inflate(R.layout.adapter_product,parent,false);
+            convertView= inflater.inflate(R.layout.adapter_panier,parent,false);
         }
 
         final ProductQuantity currentProduct = getItem(position);
