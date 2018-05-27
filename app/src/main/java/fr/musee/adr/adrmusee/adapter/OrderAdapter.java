@@ -63,11 +63,8 @@ public class OrderAdapter extends BaseAdapter {
         ArrayList<ProductQuantity> orderProducts = currentOrder.getOrderList();
 
         String orderProductsString = new String();
-        System.out.println(orderProducts);
-        System.out.println(orderProductsString);
 
         for (int i = 0; i < orderProducts.size(); i++){
-            System.out.println(i);
             orderProductsString += orderProducts.get(i).getProduct().getName() + " x" + orderProducts.get(i).getQuantity() + "\n";
 
         }
