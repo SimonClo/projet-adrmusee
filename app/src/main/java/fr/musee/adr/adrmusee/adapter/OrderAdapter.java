@@ -49,9 +49,10 @@ public class OrderAdapter extends BaseAdapter {
         if (inflater== null)
         {
             inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        } if(convertView==null)
+        }
+        if(convertView==null)
         {
-            convertView= inflater.inflate(R.layout.adapter_product,parent,false);
+            convertView= inflater.inflate(R.layout.adapter_command,parent,false);
 
         }
 
@@ -61,10 +62,12 @@ public class OrderAdapter extends BaseAdapter {
 
         ArrayList<ProductQuantity> orderProducts = currentOrder.getOrderList();
 
-        TextView orderProductsView = convertView.findViewById(R.id.command_name);
         String orderProductsString = new String();
+        System.out.println(orderProducts);
+        System.out.println(orderProductsString);
 
         for (int i = 0; i < orderProducts.size(); i++){
+            System.out.println(i);
             orderProductsString += orderProducts.get(i).getProduct().getName() + " x" + orderProducts.get(i).getQuantity() + "\n";
 
         }
