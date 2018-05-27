@@ -1,5 +1,9 @@
 package fr.musee.adr.adrmusee;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,28 +12,46 @@ public class Order {
 
     private int id;
     private static int cpt = 0;
-    private ArrayList<Product> orderList;
-    private String customerId;
+    private ArrayList<ProductQuantity> orderList;
     private double totalCost;
     private Date date;
+    private FirebaseAuth mAuth;
+    private String user_id;
+    private DatabaseReference mDatabase;
 
     private boolean ready;
 
-    private static ArrayList<Order> allOrdersList;
 
-    Order(String customerId, Basket basket){
+    // fonction de création d'une commande depuis le panier
+    public Order(Basket basket){
 
         if (basket.isPaid() == true) {
-            this.customerId = customerId;
             cpt++;
             id = cpt;
             ready = false;
-            allOrdersList.add(this);
             date = new Date();
             totalCost = basket.getTotalPrice();
 
-            orderList = basket.getListProducts();
+            orderList = basket.listProductQuantity();
+
         }
+        else{
+            System.out.println("La commande n'a pas été payée");
+        }
+    }
+
+    public Order(){
+
+    }
+
+
+    // Ajout de la commande à la db
+    public void saveOrder(){
+
+        mAuth = FirebaseAuth.getInstance();
+        user_id= mAuth.getCurrentUser().getUid();
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(user_id).child("Orders");
+        mDatabase.push().setValue(this);
     }
 
     //// Getters and setters ////
@@ -38,13 +60,10 @@ public class Order {
         return id;
     }
 
-    public ArrayList<Product> getOrderList() {
+    public ArrayList<ProductQuantity> getOrderList() {
         return orderList;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
 
     public boolean isReady() {
         return ready;
@@ -58,11 +77,15 @@ public class Order {
         return totalCost;
     }
 
-    public static ArrayList<Order> getAllOrdersList() {
-        return allOrdersList;
-    }
-
     public Date getDate() {
         return date;
+    }
+
+    public void setOrderList(ArrayList<ProductQuantity> orderList) {
+        this.orderList = orderList;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import fr.musee.adr.adrmusee.Basket;
 import fr.musee.adr.adrmusee.Product;
+import fr.musee.adr.adrmusee.ProductQuantity;
 import fr.musee.adr.adrmusee.R;
 
 public class BasketAdapter extends BaseAdapter{
@@ -27,12 +28,12 @@ public class BasketAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return basket.getListProducts().size();
+        return basket.listProductQuantity().size();
     }
 
     @Override
-    public Product getItem(int position) {
-        return basket.getListProducts().get(position);
+    public ProductQuantity getItem(int position) {
+        return basket.listProductQuantity().get(position);
     }
 
     @Override
@@ -43,25 +44,29 @@ public class BasketAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.adapter_panier, null);
-        final Product currentProduct = getItem(position);
+        final ProductQuantity currentProduct = getItem(position);
 
-        double productPrice = currentProduct.getPrice();
-        String productName = currentProduct.getName();
-        //int productQuantity = currentProduct.getQuantity();
+        double productPrice = currentProduct.getProduct().getPrice();
+        String productName = currentProduct.getProduct().getName();
+        int productQuantity = currentProduct.getQuantity();
 
         TextView productPriceView = convertView.findViewById(R.id.productBasket_price);
         productPriceView.setText(productPrice + " €");
         TextView productNameView = convertView.findViewById(R.id.productBasket_name);
         productNameView.setText(productName);
         TextView productQuantityView = convertView.findViewById(R.id.productBasket_quantity);
-        //productQuantityView.setText("x" + productQuantity);
+        productQuantityView.setText("x" + productQuantity);
 
         final Button delButton = convertView.findViewById(R.id.delButton);
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // The user just clicked
-                basket.delProduct(currentProduct);
+                int n = currentProduct.getQuantity();
+                currentProduct.setQuantity(n-1);
+                if (currentProduct.getQuantity() == 0) {
+                    basket.delProduct(currentProduct.getProduct());
+                }
 
             }
         });
