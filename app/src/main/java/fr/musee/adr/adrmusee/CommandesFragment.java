@@ -33,6 +33,8 @@ public class CommandesFragment extends Fragment {
 
          user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+         userOrders = new ArrayList<>();
+
          mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders");
          mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
@@ -53,7 +55,7 @@ public class CommandesFragment extends Fragment {
              }
          });
 
-        ListView commandsListView = (ListView) getView().findViewById(R.id.listview_commands);
+        ListView commandsListView = (ListView) view.findViewById(R.id.listview_commands);
         commandsListView.setAdapter(new OrderAdapter(this.getActivity(), userOrders));
 
         return view;
