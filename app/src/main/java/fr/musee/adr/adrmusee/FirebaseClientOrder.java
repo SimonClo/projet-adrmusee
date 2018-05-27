@@ -60,13 +60,15 @@ public class FirebaseClientOrder {
     public void getupdates(DataSnapshot dataSnapshot){
 
         orderlist.clear();
+
+
         for(DataSnapshot ds : dataSnapshot.getChildren()){
 
             ArrayList<ProductQuantity> list = new ArrayList<>();
-
-            for(int i=0; i<10; i++){
-                System.out.println(ds.child("orderList").child(String.valueOf(i)).getValue(ProductQuantity.class));
+            int i = 0;
+            while(ds.child("orderList").child(String.valueOf(i)).getValue(ProductQuantity.class) != null){
                 list.add(ds.child("orderList").child(String.valueOf(i)).getValue(ProductQuantity.class));
+                i++;
             }
 
             Order currentOrder = new Order(Double.parseDouble(ds.child("totalCost").getValue().toString()), list);

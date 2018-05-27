@@ -27,7 +27,7 @@ public class CommandesFragment extends Fragment {
 
     private String user_id;
     private ListView listView;
-    FirebaseClientOrder firebaseClient;
+    private FirebaseClientOrder firebaseClient;
     private FirebaseAuth mAuth;
 
 
@@ -35,7 +35,7 @@ public class CommandesFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_commandes, null);
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
-        final String DB_URL= "https://adrmusee.firebaseio.com/"+ user_id + ("/Orders");
+        final String DB_URL= "https://adrmusee.firebaseio.com/Users/"+ user_id + ("/Orders");
 
         listView = (ListView) view.findViewById(R.id.listview_commands);
         firebaseClient= new FirebaseClientOrder(this.getActivity(), DB_URL,listView);
