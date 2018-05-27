@@ -25,11 +25,9 @@ public class CommandesFragment extends Fragment {
 
     @Nullable
 
-    private DatabaseReference mDatabase;
-    private ArrayList<Order> userOrders;
     private String user_id;
     private ListView listView;
-    FirebaseClient firebaseClient;
+    FirebaseClientOrder firebaseClient;
     private FirebaseAuth mAuth;
 
 
@@ -37,10 +35,10 @@ public class CommandesFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_commandes, null);
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
-        final String DB_URL= "https://adrmusee.firebaseio.com/"+ user_id.("Orders");
+        final String DB_URL= "https://adrmusee.firebaseio.com/"+ user_id + ("/Orders");
 
-        listView=(ListView) view.findViewById(R.id.listview_commands);
-        firebaseClient= new FirebaseClient(this.getActivity(), DB_URL,listView);
+        listView = (ListView) view.findViewById(R.id.listview_commands);
+        firebaseClient= new FirebaseClientOrder(this.getActivity(), DB_URL,listView);
         firebaseClient.refreshdata();
         return view;
     }
