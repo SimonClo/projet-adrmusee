@@ -13,6 +13,7 @@ import java.util.List;
 
 import fr.musee.adr.adrmusee.Order;
 import fr.musee.adr.adrmusee.Product;
+import fr.musee.adr.adrmusee.ProductQuantity;
 import fr.musee.adr.adrmusee.R;
 
 public class OrderAdapter extends BaseAdapter {
@@ -49,15 +50,14 @@ public class OrderAdapter extends BaseAdapter {
         Order currentOrder = getItem(position);
 
         double orderCost = currentOrder.getTotalCost();
-        ArrayList<Product> orderProducts = currentOrder.getOrderList();
-        Date orderDate = currentOrder.getDate();
+        ArrayList<ProductQuantity> orderProducts = currentOrder.getOrderList();
         boolean orderReady = currentOrder.isReady();
 
         TextView orderProductsView = convertView.findViewById(R.id.command_name);
         String orderProductsString = new String();
 
         for (int i = 0; i < orderProducts.size(); i++){
-            orderProductsString += orderProducts.get(i).getName() + "\n";
+            orderProductsString += orderProducts.get(i).getProduct().getName() + " x" + orderProducts.get(i).getQuantity() + "\n";
 
         }
 

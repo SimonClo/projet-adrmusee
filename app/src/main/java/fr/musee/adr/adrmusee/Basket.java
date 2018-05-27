@@ -45,22 +45,30 @@ public class Basket {
 
     public ArrayList<ProductQuantity> listProductQuantity(){
         ArrayList<Product> listTest = this.listProducts;
-        int i = 0;
         ArrayList<ProductQuantity> listProductQuantity = new ArrayList<ProductQuantity>();
         Product currentProduct = new Product();
 
         while (listTest.isEmpty() == false){
             int cpt = 1;
-            currentProduct = listProducts.get(i);
+            currentProduct = listProducts.get(0);
+            int j = 1;
 
-            for (int j = i + 1; j < listTest.size(); j++){
+            while (j < listTest.size()){
 
-                if (currentProduct )
+                if (currentProduct.getId() == listProducts.get(j).getId()){
+                    cpt++;
+                    listProducts.remove(j);
+                }
+                else{
+                    j++;
+                }
 
             }
 
             listProductQuantity.add(new ProductQuantity(currentProduct, cpt));
             listTest.remove(0);
         }
+
+        return listProductQuantity;
     }
 }
