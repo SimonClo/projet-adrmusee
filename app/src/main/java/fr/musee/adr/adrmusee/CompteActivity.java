@@ -28,6 +28,9 @@ public class CompteActivity extends AppCompatActivity implements BottomNavigatio
                 fragment = new AccueilFragment();
                 break;
 
+            case R.id.navigation_panier:
+                fragment = new PanierFragment();
+                break;
             case R.id.navigation_commandes:
                 fragment = new CommandesFragment();
                 break;
