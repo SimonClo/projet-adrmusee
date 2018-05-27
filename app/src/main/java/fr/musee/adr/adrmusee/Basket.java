@@ -99,7 +99,4 @@ public class Basket {
         this.paid = paid;
     }
 
-    public Basket(){
-
-    }
 }
