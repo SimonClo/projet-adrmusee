@@ -15,7 +15,7 @@ public class AdminOrNot extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private String user_id;
-    private String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,10 @@ public class AdminOrNot extends AppCompatActivity {
         mDatabase.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-                String isadmin= dataSnapshot.child("isadmin").getValue().toString();
-                Toast.makeText(AdminOrNot.this, isadmin, Toast.LENGTH_SHORT).show();
-                if(isadmin =="1"){
+                long isadmin= (Long) dataSnapshot.child("isadmin").getValue();
+                String name= dataSnapshot.child("name").getValue().toString();
+                Toast.makeText(AdminOrNot.this, "Bonjour "+name, Toast.LENGTH_SHORT).show();
+                if(isadmin==1){
                     startActivity(new Intent(AdminOrNot.this, AdminActivity.class));
 
                 }else{
