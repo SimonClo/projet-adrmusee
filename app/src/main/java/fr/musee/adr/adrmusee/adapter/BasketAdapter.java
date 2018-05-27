@@ -5,11 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.TextView;
 
 import fr.musee.adr.adrmusee.Basket;
-import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.ProductQuantity;
 import fr.musee.adr.adrmusee.R;
 
@@ -60,7 +57,7 @@ public class BasketAdapter extends BaseAdapter{
 
         holder.price.setText(Double.toString(productPrice) + " €");
         holder.product.setText(productName);
-        holder.quantity.setText("x" + Integer.toString(productQuantity));
+        holder.quantity.setText("x " + Integer.toString(productQuantity));
 
 
 

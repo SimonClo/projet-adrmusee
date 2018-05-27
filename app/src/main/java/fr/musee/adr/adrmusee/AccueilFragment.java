@@ -7,11 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 
 public class AccueilFragment extends Fragment {
     final static  String DB_URL= "https://adrmusee.firebaseio.com/Product";
     ListView listView;
     FirebaseClient firebaseClient;
+    DatabaseReference mDatabase;
+    FirebaseAuth mAuth;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

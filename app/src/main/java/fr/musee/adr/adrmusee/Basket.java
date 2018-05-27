@@ -1,5 +1,7 @@
 package fr.musee.adr.adrmusee;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 public class Basket {
@@ -73,7 +75,7 @@ public class Basket {
     /// Getters and setters
 
     public String getUserId() {
-        return userId;
+        return FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
     }
 
     public ArrayList<Product> getListProducts() {
@@ -99,4 +101,10 @@ public class Basket {
         this.paid = paid;
     }
 
+
+    public void setListProducts(ArrayList<Product> listProducts) {this.listProducts=listProducts;}
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }
