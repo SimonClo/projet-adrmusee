@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.List;
-
 import fr.musee.adr.adrmusee.Basket;
 import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.R;
@@ -49,14 +47,14 @@ public class BasketAdapter extends BaseAdapter{
 
         double productPrice = currentProduct.getPrice();
         String productName = currentProduct.getName();
-        int productQuantity = currentProduct.getQuantity();
+        //int productQuantity = currentProduct.getQuantity();
 
         TextView productPriceView = convertView.findViewById(R.id.productBasket_price);
         productPriceView.setText(productPrice + " €");
         TextView productNameView = convertView.findViewById(R.id.productBasket_name);
         productNameView.setText(productName);
         TextView productQuantityView = convertView.findViewById(R.id.productBasket_quantity);
-        productQuantityView.setText("x" + productQuantity);
+        //productQuantityView.setText("x" + productQuantity);
 
         final Button delButton = convertView.findViewById(R.id.delButton);
         delButton.setOnClickListener(new View.OnClickListener() {

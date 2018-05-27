@@ -11,11 +11,9 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
+
 import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
-=======
-import fr.musee.adr.adrmusee.adapter.ProductAdapter;
->>>>>>> bbcbb43349338215ff796e3077c52508e864cc97
+
 
 /**
      * Created by Admin on 5/26/2017.
@@ -28,11 +26,8 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter;
         ListView listView;
         Firebase firebase;
         ArrayList<Product> productlist= new ArrayList<>();
-<<<<<<< HEAD
         fr.musee.adr.adrmusee.adapter.ProductAdapter2 ProductAdapter2;
-=======
-        fr.musee.adr.adrmusee.adapter.ProductAdapter ProductAdapter;
->>>>>>> bbcbb43349338215ff796e3077c52508e864cc97
+
 
 
         public  FirebaseClient(Context c, String DB_URL, ListView listView)

@@ -18,6 +18,7 @@ public class AccueilFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_accueil, null);
         listView=(ListView) view.findViewById(R.id.list_products);
         firebaseClient= new FirebaseClient(this.getActivity(), DB_URL,listView);
+        firebaseClient.savedata("pizza saumon",10.5F,"");
         firebaseClient.refreshdata();
         return view;
 

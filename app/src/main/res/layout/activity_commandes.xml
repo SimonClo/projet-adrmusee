@@ -14,12 +14,10 @@
     <ListView
         android:id="@+id/listview_commands"
         android:layout_width="wrap_content"
-<<<<<<< HEAD
         android:layout_height="wrap_content"
         ></ListView>
-=======
-        android:layout_height="wrap_content"></ListView>
->>>>>>> bbcbb43349338215ff796e3077c52508e864cc97
+
+
     
 </LinearLayout>
 

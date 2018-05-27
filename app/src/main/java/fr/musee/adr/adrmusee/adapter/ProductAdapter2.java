@@ -55,7 +55,7 @@ public class ProductAdapter2 extends BaseAdapter {
 
         MyHolder holder= new MyHolder(convertview);
         holder.nameTxt.setText(productlist.get(i).getName());
-        holder.price.setText(Double.toString(productlist.get(i).getPrice()));
+        holder.price.setText(Double.toString(productlist.get(i).getPrice())+"€");
         PicassoClient.downloadimg(c,productlist.get(i).getimage(),holder.img);
 
 

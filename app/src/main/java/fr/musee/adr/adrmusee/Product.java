@@ -5,24 +5,22 @@ public class Product {
 
     //private static int cpt = 0;
     private String name;
-    //private int id;
+    private String id;
     private String producttype;
     private double price;
     //private int quantity;
     public String image;
 
-    Product(String name, float price, String image){
+    Product(String name, float price, String image,String id){
         this.name = name;
         this.price = price;
         this.image = image;
         //cpt++;
-        //this.id = cpt;
+        this.id = id;
 
     }
 
-    //public int getId() {
-    //   return id;
-    //}
+    public String getId() {return id; }
 
     public String getName() {
         return name;
@@ -59,4 +57,8 @@ public class Product {
     public Product() {
 
     }
+    public void setId (String Id){
+        this.id = id;
+    }
+
 }
