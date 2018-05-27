@@ -11,6 +11,7 @@ public class Product {
     //private int quantity;
     public String image;
 
+
     Product(String name, float price, String image,String id){
         this.name = name;
         this.price = price;

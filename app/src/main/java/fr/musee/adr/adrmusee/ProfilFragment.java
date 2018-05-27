@@ -26,7 +26,6 @@ public class ProfilFragment extends Fragment {
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private String user_id;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,6 +59,7 @@ public class ProfilFragment extends Fragment {
 
             }
         });
+
         Sedeconnecter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -44,14 +44,11 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
 
         public  void savedata(String name,float price, String url)
         {
-            Product product= new Product(name,price,url);
+            Product product= new Product();
             product.setName(name);
             product.setProductImage(url);
             product.setPrice(price);
-
-
             firebase.push().setValue(product);
-
 
         }
 

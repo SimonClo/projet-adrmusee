@@ -29,6 +29,10 @@ public class AdminActivity extends AppCompatActivity implements BottomNavigation
                 fragment = new AccueilFragment();
                 break;
 
+            case R.id.navigation_panier:
+                fragment = new AccueilFragment();
+                break;
+
             case R.id.navigation_commandes:
                 fragment = new CommandesFragment();
                 break;
