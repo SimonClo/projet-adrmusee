@@ -42,4 +42,25 @@ public class Basket {
     public void setPaid(boolean paid) {
         this.paid = paid;
     }
+
+    public ArrayList<ProductQuantity> listProductQuantity(){
+        ArrayList<Product> listTest = this.listProducts;
+        int i = 0;
+        ArrayList<ProductQuantity> listProductQuantity = new ArrayList<ProductQuantity>();
+        Product currentProduct = new Product();
+
+        while (listTest.isEmpty() == false){
+            int cpt = 1;
+            currentProduct = listProducts.get(i);
+
+            for (int j = i + 1; j < listTest.size(); j++){
+
+                if (currentProduct )
+
+            }
+
+            listProductQuantity.add(new ProductQuantity(currentProduct, cpt));
+            listTest.remove(0);
+        }
+    }
 }

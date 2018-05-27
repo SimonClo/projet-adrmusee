@@ -8,14 +8,12 @@ public class Order {
 
     private int id;
     private static int cpt = 0;
-    private ArrayList<Product> orderList;
+    private ArrayList<ProductQuantity> orderList;
     private String customerId;
     private double totalCost;
     private Date date;
 
     private boolean ready;
-
-    private static ArrayList<Order> allOrdersList;
 
     Order(String customerId, Basket basket){
 
@@ -24,12 +22,15 @@ public class Order {
             cpt++;
             id = cpt;
             ready = false;
-            allOrdersList.add(this);
             date = new Date();
             totalCost = basket.getTotalPrice();
 
-            orderList = basket.getListProducts();
+            orderList = basket.listProductQuantity();
         }
+    }
+
+    public Order(){
+
     }
 
     //// Getters and setters ////
@@ -38,7 +39,7 @@ public class Order {
         return id;
     }
 
-    public ArrayList<Product> getOrderList() {
+    public ArrayList<ProductQuantity> getOrderList() {
         return orderList;
     }
 
@@ -58,11 +59,11 @@ public class Order {
         return totalCost;
     }
 
-    public static ArrayList<Order> getAllOrdersList() {
-        return allOrdersList;
-    }
-
     public Date getDate() {
         return date;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }

@@ -23,7 +23,7 @@ public class CommandesFragment extends Fragment {
     @Nullable
 
     private DatabaseReference mDatabase;
-    private ArrayList commands;
+    private ArrayList<Order> commands;
     private String user_id;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,7 +35,10 @@ public class CommandesFragment extends Fragment {
          mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
-                 commands = new ArrayList();
+                 for(DataSnapshot ds: dataSnapshot.getChildren()){
+                     Order currentOrder = new Order();
+                     currentOrder.setCustomerId(user_id);
+                 }
 
              }
 
