@@ -11,7 +11,6 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
 
 

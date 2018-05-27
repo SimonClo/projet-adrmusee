@@ -17,7 +17,7 @@ public class PicassoClient {
 
         }else
         {
-            Picasso.with(c).load(R.drawable.ic_home).into(img);
+            Picasso.with(c).load(R.drawable.adrlogo).into(img);
         }
     }
 

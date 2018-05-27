@@ -50,26 +50,7 @@
         android:layout_marginVertical="10dp"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="280dp" />
-    <Button
-        android:id="@+id/sendverificationcode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Envoi du code de vérification"
-        android:layout_marginVertical="10dp"
-        android:background="@color/bleugeadr"
-        android:layout_marginHorizontal="10dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="367dp" />
-    <EditText
-        android:id="@+id/code_verification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Code de vérification"
-        android:inputType="textPassword"
-        android:layout_marginVertical="10dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="280dp" />
+
     <Button
         android:id="@+id/buttonsignup"
         android:layout_width="match_parent"

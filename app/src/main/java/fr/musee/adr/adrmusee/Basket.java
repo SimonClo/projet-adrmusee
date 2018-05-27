@@ -83,4 +83,8 @@ public class Basket {
     public void setPaid(boolean paid) {
         this.paid = paid;
     }
+
+    public Basket(){
+
+    }
 }
