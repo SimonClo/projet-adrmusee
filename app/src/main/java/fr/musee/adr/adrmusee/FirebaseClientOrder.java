@@ -72,6 +72,7 @@ public class FirebaseClientOrder {
             }
 
             Order currentOrder = new Order(Double.parseDouble(ds.child("totalCost").getValue().toString()), list);
+            currentOrder.setReady(Boolean.parseBoolean(ds.child("orderList").child("ready").getValue().toString()));
             orderlist.add(currentOrder);
 
         }

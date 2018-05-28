@@ -26,9 +26,5 @@
         android:title="Admin"
         android:icon="@drawable/ic_build"
         />
-    <item
-        android:id="@+id/navigation_commandes_admin"
-        android:title="Admin"
-        android:icon="@drawable/ic_build"
-        />
+
 </menu>

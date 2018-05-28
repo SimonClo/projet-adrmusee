@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/command_name_admin"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:text="Commande"
+            android:textSize="13dp"
+            android:layout_margin="10dp"
+            android:textColor="@color/bleugeadr"/>
+
+        <TextView
+            android:id="@+id/command_price_admin"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="@string/command_default_price"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/command_ready"/>
+
+        <TextView
+            android:id="@+id/command_user_admin"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="En cours de préparation"
+            android:layout_toRightOf="@+id/command_name"
+            android:layout_margin="10dp"
+            android:textSize="10dp"/>
+        <Button
+            android:id="@+id/button_ready"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prête"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@id/command_price"/>
+
+    </LinearLayout>
+

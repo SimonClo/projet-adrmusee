@@ -10,14 +10,16 @@ import java.util.Date;
 public class Order {
     // Classe contenant les commandes des clients
 
-    private int id;
+    private String id;
     private static int cpt = 0;
     private ArrayList<ProductQuantity> orderList;
     private double totalCost;
     private Date date;
     private FirebaseAuth mAuth;
     private String user_id;
+    private String user;
     private DatabaseReference mDatabase;
+    private int state;
 
     private boolean ready;
 
@@ -26,8 +28,6 @@ public class Order {
     public Order(Basket basket){
 
         if (basket.isPaid() == true) {
-            cpt++;
-            id = cpt;
             ready = false;
             date = new Date();
             totalCost = basket.getTotalPrice();
@@ -62,7 +62,7 @@ public class Order {
 
     //// Getters and setters ////
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -94,4 +94,26 @@ public class Order {
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user=user;
+
+    }
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id=user_id;
+
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
 }

@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -174,6 +175,13 @@ public class AdminFragment extends Fragment {
             }
         });
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String user_id= mAuth.getCurrentUser().getUid();
+        final String DB_URL= "https://adrmusee.firebaseio.com/Users/";
+
+        listView = (ListView) view.findViewById(R.id.listview_commands_admin);
+        FirebaseClientOrderAdmin firebaseClientOrderAdmin= new FirebaseClientOrderAdmin(this.getActivity(), DB_URL,listView);
+        firebaseClientOrderAdmin.refreshdata();
 
         return view;
 

@@ -35,7 +35,6 @@ public class PanierFragment extends Fragment {
         final String DB_URL= "https://adrmusee.firebaseio.com/Users/"+user_id.toString()+"/";
         firebaseClient= new FirebaseClientBasket(this.getActivity(), DB_URL,listView);
         basket = CompteActivity.userbasket;
-        firebaseClient.savedata(basket);
         firebaseClient.refreshdata();
         TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
         totalPriceView.setText(basket.getTotalPrice() + " €");

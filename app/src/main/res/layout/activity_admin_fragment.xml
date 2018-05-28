@@ -74,4 +74,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Ajouter un produit" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Mes commandes"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_margin="10dp"/>
+
+        <ListView
+            android:id="@+id/listview_commands_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ></ListView>
+
 </LinearLayout>
