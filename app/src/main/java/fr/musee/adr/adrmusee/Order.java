@@ -21,14 +21,14 @@ public class Order {
     private DatabaseReference mDatabase;
     private int state;
 
-    private long ready;
+    private String ready;
 
 
     // fonction de création d'une commande depuis le panier
     public Order(Basket basket){
 
         if (basket.isPaid() == true) {
-            ready = 0L;
+            ready = "false";
             date = new Date();
             totalCost = basket.getTotalPrice();
 
@@ -71,11 +71,11 @@ public class Order {
     }
 
 
-    public long isReady() {
+    public String isReady() {
         return ready;
     }
 
-    public void setReady(long ready) {
+    public void setReady(String ready) {
         this.ready = ready;
     }
 
