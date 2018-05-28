@@ -80,12 +80,13 @@ public class OrderAdminAdapter extends BaseAdapter {
         holder.nameuser.setText(Username);
         final Button  button_ready= (Button) convertView.findViewById(R.id.button_ready);
         if(currentOrder.isReady()){button_ready.setText("Prise");}
+        System.out.println(currentOrder.isReady());
         button_ready.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!currentOrder.isReady()){
                 FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders").child(id_command).child("ready").setValue(Boolean.TRUE);
-                currentOrder.isReady();
+                currentOrder.setReady(Boolean.TRUE);
                 }else{
                     FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders").child(id_command).removeValue();
                 }

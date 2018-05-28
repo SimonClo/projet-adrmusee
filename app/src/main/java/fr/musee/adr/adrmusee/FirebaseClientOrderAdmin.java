@@ -63,6 +63,7 @@ public class FirebaseClientOrderAdmin {
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 String user = ds.child("name").getValue().toString();
                 String user_id= ds.getKey().toString();
+
             for (DataSnapshot ds1 : ds.child("Orders").getChildren()) {
                 String id_command = ds1.getKey().toString();
                 ArrayList<ProductQuantity> list = new ArrayList<>();
@@ -75,6 +76,8 @@ public class FirebaseClientOrderAdmin {
                 Order currentOrder = new Order(Double.parseDouble(ds1.child("totalCost").getValue().toString()), list);
                 currentOrder.setUser(user);
                 currentOrder.setUser_id(user_id);
+                long isready = (Integer) ds1.child("ready").getValue();
+                currentOrder.setReady(isready);
                 currentOrder.setId(id_command);
                 orderlist.add(currentOrder);
 

@@ -5,14 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import fr.musee.adr.adrmusee.Order;
-import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.ProductQuantity;
 import fr.musee.adr.adrmusee.R;
 
@@ -71,8 +68,8 @@ public class OrderAdapter extends BaseAdapter {
 
         holder.listProduct.setText(orderProductsString);
 
-        boolean orderReady = currentOrder.isReady();
-        if (orderReady == true){
+        long orderReady = currentOrder.isReady();
+        if (orderReady == 1){
             holder.ready.setText("Prêt");
         }
         else{
