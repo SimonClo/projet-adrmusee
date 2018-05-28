@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,8 @@ public class OrderAdapter extends BaseAdapter {
 
         Order currentOrder = getItem(position);
         MyHolderOrder holder= new MyHolderOrder(convertView);
-        holder.price.setText(Double.toString(currentOrder.getTotalCost())+"€");
+        DecimalFormat df2 = new DecimalFormat(".##");
+        holder.price.setText(df2.format(currentOrder.getTotalCost())+"€");
 
         ArrayList<ProductQuantity> orderProducts = currentOrder.getOrderList();
 
@@ -68,8 +70,7 @@ public class OrderAdapter extends BaseAdapter {
 
         holder.listProduct.setText(orderProductsString);
 
-        long orderReady = currentOrder.isReady();
-        if (orderReady == 1L){
+        if (currentOrder.isReady() == 1L){
             holder.ready.setText("Prêt");
         }
         else{

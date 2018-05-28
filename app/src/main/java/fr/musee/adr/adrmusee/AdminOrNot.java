@@ -15,12 +15,13 @@ public class AdminOrNot extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private String user_id;
-
+    public static Basket userbasket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminornot);
+        userbasket = new Basket();
         mAuth=FirebaseAuth.getInstance();
         user_id=mAuth.getCurrentUser().getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);

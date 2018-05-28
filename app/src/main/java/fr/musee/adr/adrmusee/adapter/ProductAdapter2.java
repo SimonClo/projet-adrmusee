@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import fr.musee.adr.adrmusee.CompteActivity;
+import fr.musee.adr.adrmusee.AdminOrNot;
 import fr.musee.adr.adrmusee.Product;
 import fr.musee.adr.adrmusee.R;
 
@@ -60,13 +61,14 @@ public class ProductAdapter2 extends BaseAdapter {
         final Product currentProduct = getItem(i);
         MyHolder holder= new MyHolder(convertview);
         holder.nameTxt.setText(currentProduct.getName());
-        holder.price.setText(Double.toString(currentProduct.getPrice())+"€");
+        DecimalFormat df2 = new DecimalFormat(".##");
+        holder.price.setText(df2.format(currentProduct.getPrice())+"€");
         PicassoClient.downloadimg(c,currentProduct.getimage(),holder.img);
 
         convertview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CompteActivity.userbasket.addProduct(currentProduct);
+                AdminOrNot.userbasket.addProduct(currentProduct);
                 Toast.makeText(viewGroup.getContext(), currentProduct.getName() + " ajouté(e) au panier", Toast.LENGTH_SHORT).show();
 
             }

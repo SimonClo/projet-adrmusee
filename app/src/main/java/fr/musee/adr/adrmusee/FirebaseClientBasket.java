@@ -82,7 +82,7 @@ import fr.musee.adr.adrmusee.adapter.BasketAdapter;
                 listView.setAdapter(BasketAdapter);
             }else
             {
-                Toast.makeText(c, "Base de données vide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "Votre panier est vide", Toast.LENGTH_SHORT).show();
             }
         }
 

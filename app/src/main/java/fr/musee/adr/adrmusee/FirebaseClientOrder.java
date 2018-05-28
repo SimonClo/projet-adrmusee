@@ -72,12 +72,13 @@ public class FirebaseClientOrder {
             }
 
             Order currentOrder = new Order(Double.parseDouble(ds.child("totalCost").getValue().toString()), list);
-            long ready = Long.parseLong(ds.child("orderList").child("ready").getValue().toString());
-            System.out.println(ready);
-            if (ready ==1L){
+            if(ds.child("ready").getValue()!=null){
+            long ready = Long.parseLong(ds.child("ready").getValue().toString());
+            System.out.println(ds.child("ready").getValue());
+            if (ready == 1L){
             currentOrder.setReady(1L);}else{
                 currentOrder.setReady(0L);
-            }
+            }}
             orderlist.add(currentOrder);
 
         }
@@ -87,7 +88,7 @@ public class FirebaseClientOrder {
             listView.setAdapter(o);
         }else
         {
-            Toast.makeText(c, "Base de données vide", Toast.LENGTH_SHORT).show();
+            Toast.makeText(c, "Vous n'avez pas de commande en attente", Toast.LENGTH_SHORT).show();
         }
     }
 

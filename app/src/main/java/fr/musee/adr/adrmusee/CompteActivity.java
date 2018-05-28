@@ -8,14 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 public class CompteActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
-    public static Basket userbasket;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compte);
     loadFragment(new AccueilFragment());
-    userbasket = new Basket();
     BottomNavigationView menu_nav = findViewById(R.id.Navbot);
         menu_nav.setOnNavigationItemSelectedListener(this);
     }

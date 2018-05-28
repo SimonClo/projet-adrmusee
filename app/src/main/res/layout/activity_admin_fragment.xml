@@ -26,23 +26,27 @@
             android:background="@drawable/linearborder">
 
         </Spinner>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:gravity="center">
         <Button
             android:id="@+id/ButtonAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
             android:layout_alignBottom="@+id/SpinnerUsers"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:text="Donner les droits d'admin" />
 
         <Button
             android:id="@+id/RemoveButtonAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
             android:layout_alignBottom="@+id/SpinnerUsers"
             android:layout_gravity="center"
             android:text="Retirer les droits d'admin" />
+    </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -58,22 +62,27 @@
             android:background="@drawable/linearborder">
 
         </Spinner>
-
-        <Button
-            android:id="@+id/RemoveProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Retirer le produit" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/RemoveProduct"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="Retirer le produit" />
+            <Button
+                android:id="@+id/AddProduct"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="Ajouter un produit" />
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/AddProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Ajouter un produit" />
+
 
     <TextView
         android:layout_width="match_parent"

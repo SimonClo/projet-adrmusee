@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
+import java.text.DecimalFormat;
+
 
 public class PanierFragment extends Fragment {
 
@@ -34,10 +36,11 @@ public class PanierFragment extends Fragment {
         listView=(ListView) view.findViewById(R.id.listview_basket);
         final String DB_URL= "https://adrmusee.firebaseio.com/Users/"+user_id.toString()+"/";
         firebaseClient= new FirebaseClientBasket(this.getActivity(), DB_URL,listView);
-        basket = CompteActivity.userbasket;
+        basket = AdminOrNot.userbasket;
         firebaseClient.refreshdata();
         TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
-        totalPriceView.setText(basket.getTotalPrice() + " €");
+        DecimalFormat df2 = new DecimalFormat(".##");
+        totalPriceView.setText(df2.format(basket.getTotalPrice()) + " €");
 
         Button payButton = view.findViewById(R.id.buttonPay);
 

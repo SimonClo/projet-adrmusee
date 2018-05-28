@@ -82,7 +82,7 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
                 listView.setAdapter(ProductAdapter2);
             }else
             {
-                Toast.makeText(c, "Base de données vide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "Aucun produit actuellement", Toast.LENGTH_SHORT).show();
             }
         }
 

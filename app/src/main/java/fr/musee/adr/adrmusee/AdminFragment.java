@@ -37,13 +37,11 @@ public class AdminFragment extends Fragment {
     private ArrayList list_id_products;
     private Button RemoveProductButton;
     private Button AddProductButton;
-    public static Basket userbasket;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_admin_fragment, null);
-        userbasket = new Basket();
         list_users = new ArrayList<>();
         list_emails = new ArrayList<>();
         list_isadmin = new ArrayList<>();

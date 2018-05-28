@@ -2,7 +2,6 @@ package fr.musee.adr.adrmusee;
 
 import android.content.Context;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -86,7 +85,6 @@ public class FirebaseClientOrderAdmin {
                 OrderAdminAdapter o = new OrderAdminAdapter(c, orderlist);
                 listView.setAdapter(o);
             } else {
-                Toast.makeText(c, "Base de données vide", Toast.LENGTH_SHORT).show();
             }
         }
     }
