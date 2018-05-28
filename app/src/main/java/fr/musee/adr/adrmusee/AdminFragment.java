@@ -53,9 +53,10 @@ public class AdminFragment extends Fragment {
                     String user_id = ds.getKey().toString();
                     String email = ds.child("email").getValue().toString();
                     long isadmin = Long.parseLong(ds.child("isadmin").getValue().toString());
+                    if(!list_emails.contains(email)){
                     list_users.add(user_id);
                     list_emails.add(email);
-                    list_isadmin.add(isadmin);
+                    list_isadmin.add(isadmin);}
 
                 }
                 AdminButton = (Button) view.findViewById(R.id.ButtonAdmin);
@@ -80,6 +81,7 @@ public class AdminFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 mDatabaseUsers.child(user_id).child("isadmin").setValue(1L);
+                                FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id).child("isadmin").setValue(1L);
                                 list_emails.clear();
                                 list_users.clear();
                                 list_isadmin.clear();
@@ -90,6 +92,7 @@ public class AdminFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 mDatabaseUsers.child(user_id).child("isadmin").setValue(0L);
+                                FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id).child("isadmin").setValue(0L);
                                 list_emails.clear();
                                 list_users.clear();
                                 list_isadmin.clear();

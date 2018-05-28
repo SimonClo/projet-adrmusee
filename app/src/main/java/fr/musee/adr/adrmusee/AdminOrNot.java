@@ -21,10 +21,10 @@ public class AdminOrNot extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminornot);
-        userbasket = new Basket();
+        userbasket= new Basket();
         mAuth=FirebaseAuth.getInstance();
         user_id=mAuth.getCurrentUser().getUid();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id);
         mDatabase.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {

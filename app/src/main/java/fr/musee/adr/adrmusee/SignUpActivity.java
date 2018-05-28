@@ -74,7 +74,8 @@ public class SignUpActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         String user_id = mAuth.getCurrentUser().getUid();
                         DatabaseReference current_user_db = mDatabase.child(user_id);
-
+                        FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id).child("isadmin").setValue(admin);
+                        FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id).child("name").setValue(name);
                         current_user_db.child("name").setValue(name);
                         current_user_db.child("phone").setValue(phone);
                         current_user_db.child("isadmin").setValue(admin);

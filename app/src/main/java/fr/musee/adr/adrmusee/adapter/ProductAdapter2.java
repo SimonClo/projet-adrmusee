@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -61,6 +64,7 @@ public class ProductAdapter2 extends BaseAdapter {
         final Product currentProduct = getItem(i);
         MyHolder holder= new MyHolder(convertview);
         holder.nameTxt.setText(currentProduct.getName());
+        final String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DecimalFormat df2 = new DecimalFormat(".##");
         holder.price.setText(df2.format(currentProduct.getPrice())+"€");
         PicassoClient.downloadimg(c,currentProduct.getimage(),holder.img);
@@ -68,9 +72,9 @@ public class ProductAdapter2 extends BaseAdapter {
         convertview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdminOrNot.userbasket.addProduct(currentProduct);
                 Toast.makeText(viewGroup.getContext(), currentProduct.getName() + " ajouté(e) au panier", Toast.LENGTH_SHORT).show();
-
+                FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("userbasket").push().setValue(currentProduct);
+                AdminOrNot.userbasket.addProduct(currentProduct);
             }
         });
 

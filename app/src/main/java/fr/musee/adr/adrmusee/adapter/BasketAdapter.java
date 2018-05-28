@@ -6,31 +6,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import fr.musee.adr.adrmusee.Basket;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
 import fr.musee.adr.adrmusee.ProductQuantity;
 import fr.musee.adr.adrmusee.R;
 
 public class BasketAdapter extends BaseAdapter{
 
     private Context context;
-    private Basket basket;
+    private ArrayList<ProductQuantity> productQuantity;
     private LayoutInflater inflater;
 
-    public BasketAdapter(Context context, Basket basket){
+    public BasketAdapter(Context context, ArrayList<ProductQuantity> productQuantity){
         this.context = context;
-        this.basket = basket;
+        this.productQuantity = productQuantity;
         this.inflater = LayoutInflater.from(context);
     }
 
 
     @Override
     public int getCount() {
-        return basket.listProductQuantity().size();
+        return productQuantity.size();
     }
 
     @Override
     public ProductQuantity getItem(int position) {
-        return basket.listProductQuantity().get(position);
+        return productQuantity.get(position);
     }
 
     @Override
@@ -50,12 +52,12 @@ public class BasketAdapter extends BaseAdapter{
 
         final ProductQuantity currentProduct = getItem(position);
         MyHolderBasket holder= new MyHolderBasket(convertView);
-
+        DecimalFormat df2 = new DecimalFormat(".##");
         double productPrice = currentProduct.getProduct().getPrice();
         String productName = currentProduct.getProduct().getName();
         int productQuantity = currentProduct.getQuantity();
 
-        holder.price.setText(Double.toString(productPrice) + " €");
+        holder.price.setText(df2.format(Double.toString(productPrice)) + " €");
         holder.product.setText(productName);
         holder.quantity.setText("x " + Integer.toString(productQuantity));
 

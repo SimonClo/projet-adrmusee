@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.text.DecimalFormat;
 
+import fr.musee.adr.adrmusee.adapter.BasketAdapter;
+
 
 public class PanierFragment extends Fragment {
 
@@ -22,7 +24,6 @@ public class PanierFragment extends Fragment {
     private static String user_id;
     private DatabaseReference mDatabase;
     ListView listView;
-    FirebaseClientBasket firebaseClient;
 
 
     @Nullable
@@ -32,14 +33,13 @@ public class PanierFragment extends Fragment {
         View view=inflater.inflate(R.layout.activity_panier, null);
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
-
+        basket=AdminOrNot.userbasket;
         listView=(ListView) view.findViewById(R.id.listview_basket);
-        final String DB_URL= "https://adrmusee.firebaseio.com/Users/"+user_id.toString()+"/";
-        firebaseClient= new FirebaseClientBasket(this.getActivity(), DB_URL,listView);
-        basket = AdminOrNot.userbasket;
-        firebaseClient.refreshdata();
-        TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
-        DecimalFormat df2 = new DecimalFormat(".##");
+        BasketAdapter productAdapter2=new BasketAdapter(this.getActivity(), basket.listProductQuantity());
+        listView.setAdapter(productAdapter2);
+
+        final TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
+        final DecimalFormat df2 = new DecimalFormat(".##");
         totalPriceView.setText(df2.format(basket.getTotalPrice()) + " €");
 
         Button payButton = view.findViewById(R.id.buttonPay);
@@ -48,10 +48,9 @@ public class PanierFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // The user just clicked
-                basket.setPaid(true);
+                basket.setPaid(Boolean.TRUE);
                 Order newOrder = new Order(basket);
                 newOrder.saveOrder();
-
             }
 
         });
