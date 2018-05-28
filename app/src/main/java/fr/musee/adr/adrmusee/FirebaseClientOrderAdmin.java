@@ -76,7 +76,7 @@ public class FirebaseClientOrderAdmin {
                 Order currentOrder = new Order(Double.parseDouble(ds1.child("totalCost").getValue().toString()), list);
                 currentOrder.setUser(user);
                 currentOrder.setUser_id(user_id);
-                String isready = ds1.child("ready").getValue().toString();
+                long isready = Long.parseLong(ds1.child("ready").getValue().toString());
                 currentOrder.setReady(isready);
                 currentOrder.setId(id_command);
                 orderlist.add(currentOrder);

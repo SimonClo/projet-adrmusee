@@ -68,14 +68,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderAdminAdapter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrderAdminAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/OrderAdminAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="85" column="47" lean-forward="false" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+            <state relative-caret-position="210">
+              <caret line="87" column="152" lean-forward="false" selection-start-line="87" selection-start-column="152" selection-end-line="87" selection-end-column="152" />
               <folding>
-                <element signature="e#2576#3138#0" expanded="true" />
-                <element signature="e#3137#3138#0" expanded="true" />
+                <element signature="e#2637#3186#0" expanded="true" />
+                <element signature="e#3185#3186#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,10 +84,10 @@
       <file leaf-file-name="FirebaseClientOrder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="78" column="44" lean-forward="false" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+            <state relative-caret-position="217">
+              <caret line="80" column="40" lean-forward="false" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
               <folding>
-                <marker date="1527473575000" expanded="true" signature="2402:2591" ph="{...}" />
+                <marker date="1527474371000" expanded="true" signature="2403:2592" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -96,13 +96,13 @@
       <file leaf-file-name="Order.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="872">
-              <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="360">
+              <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
               <folding>
-                <element signature="e#2256#2257#0" expanded="true" />
-                <element signature="e#2283#2284#0" expanded="true" />
-                <element signature="e#2387#2388#0" expanded="true" />
-                <element signature="e#2417#2418#0" expanded="true" />
+                <element signature="e#2245#2246#0" expanded="true" />
+                <element signature="e#2272#2273#0" expanded="true" />
+                <element signature="e#2376#2377#0" expanded="true" />
+                <element signature="e#2406#2407#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FirebaseClientOrderAdmin.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FirebaseClientOrderAdmin.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrderAdmin.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="146">
-              <caret line="78" column="73" lean-forward="false" selection-start-line="78" selection-start-column="73" selection-end-line="78" selection-end-column="73" />
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
                 <element signature="e#1250#1251#0" expanded="true" />
                 <element signature="e#1306#1307#0" expanded="true" />
@@ -2312,10 +2312,10 @@
         <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/MyHolderOrderAdmin.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/adapter_command_admin.xml" />
         <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/Order.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/OrderAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrder.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrderAdmin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrder.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/OrderAdminAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/OrderAdapter.java" />
       </list>
     </option>
   </component>
@@ -3154,19 +3154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="872">
-          <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding>
-            <element signature="e#2256#2257#0" expanded="true" />
-            <element signature="e#2283#2284#0" expanded="true" />
-            <element signature="e#2387#2388#0" expanded="true" />
-            <element signature="e#2417#2418#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/ProductAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -3175,23 +3162,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrderAdmin.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="78" column="73" lean-forward="false" selection-start-line="78" selection-start-column="73" selection-end-line="78" selection-end-column="73" />
+        <state relative-caret-position="360">
+          <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
           <folding>
-            <element signature="e#1250#1251#0" expanded="true" />
-            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#2245#2246#0" expanded="true" />
+            <element signature="e#2272#2273#0" expanded="true" />
+            <element signature="e#2376#2377#0" expanded="true" />
+            <element signature="e#2406#2407#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="78" column="44" lean-forward="false" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+        <state relative-caret-position="217">
+          <caret line="80" column="40" lean-forward="false" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
           <folding>
-            <marker date="1527473575000" expanded="true" signature="2402:2591" ph="{...}" />
+            <marker date="1527474371000" expanded="true" signature="2403:2592" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/OrderAdminAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="87" column="152" lean-forward="false" selection-start-line="87" selection-start-column="152" selection-end-line="87" selection-end-column="152" />
+          <folding>
+            <element signature="e#2637#3186#0" expanded="true" />
+            <element signature="e#3185#3186#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3204,13 +3204,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/adapter/OrderAdminAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/musee/adr/adrmusee/FirebaseClientOrderAdmin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="85" column="47" lean-forward="false" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+        <state relative-caret-position="146">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
-            <element signature="e#2576#3138#0" expanded="true" />
-            <element signature="e#3137#3138#0" expanded="true" />
+            <element signature="e#1250#1251#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
           </folding>
         </state>
       </provider>

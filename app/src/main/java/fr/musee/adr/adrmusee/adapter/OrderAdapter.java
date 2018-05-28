@@ -68,8 +68,8 @@ public class OrderAdapter extends BaseAdapter {
 
         holder.listProduct.setText(orderProductsString);
 
-        String orderReady = currentOrder.isReady();
-        if (orderReady == "true"){
+        long orderReady = currentOrder.isReady();
+        if (orderReady == 1L){
             holder.ready.setText("Prêt");
         }
         else{
