@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import fr.musee.adr.adrmusee.AdminOrNot;
 import fr.musee.adr.adrmusee.ProductQuantity;
 import fr.musee.adr.adrmusee.R;
 
@@ -47,7 +48,7 @@ public class BasketAdapter extends BaseAdapter{
         inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if(convertView==null) {
-            convertView= inflater.inflate(R.layout.adapter_panier,parent,false);
+             convertView= inflater.inflate(R.layout.adapter_panier,parent,false);
         }
 
         final ProductQuantity currentProduct = getItem(position);
@@ -57,13 +58,17 @@ public class BasketAdapter extends BaseAdapter{
         String productName = currentProduct.getProduct().getName();
         int productQuantity = currentProduct.getQuantity();
 
-        holder.price.setText(df2.format(Double.toString(productPrice)) + " €");
+        holder.price.setText(df2.format(productPrice*productQuantity) + " €");
         holder.product.setText(productName);
         holder.quantity.setText("x " + Integer.toString(productQuantity));
+        PicassoClient.downloadimg(context,currentProduct.getProduct().getimage(),holder.image);
 
-
-
-
+        holder.delbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminOrNot.userbasket.delProduct(currentProduct.getProduct());
+            }
+        });
         return convertView;
     }
 }

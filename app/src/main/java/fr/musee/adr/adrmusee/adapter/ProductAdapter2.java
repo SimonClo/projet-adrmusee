@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -73,7 +72,6 @@ public class ProductAdapter2 extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(viewGroup.getContext(), currentProduct.getName() + " ajouté(e) au panier", Toast.LENGTH_SHORT).show();
-                FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("userbasket").push().setValue(currentProduct);
                 AdminOrNot.userbasket.addProduct(currentProduct);
             }
         });

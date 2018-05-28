@@ -47,7 +47,7 @@ import fr.musee.adr.adrmusee.adapter.ProductAdapter2;
             product.setName(name);
             product.setProductImage(url);
             product.setPrice(price);
-            firebase.child("userbasket").push().setValue(product);
+            firebase.push().setValue(product);
 
         }
 

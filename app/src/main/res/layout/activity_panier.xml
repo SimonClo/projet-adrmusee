@@ -19,11 +19,6 @@
         android:layout_height="wrap_content"
     ></ListView>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/linearborder"
-        android:layout_margin="20dp">
 
         <TextView
             android:id="@+id/prixtotal"
@@ -39,7 +34,6 @@
             android:gravity="center"
             android:text="0€"
             android:layout_below="@+id/prixtotal"/>
-    </RelativeLayout>
 
     <Button
         android:id="@+id/buttonPay"

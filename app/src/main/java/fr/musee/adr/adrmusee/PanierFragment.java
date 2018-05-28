@@ -34,13 +34,15 @@ public class PanierFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user_id= mAuth.getCurrentUser().getUid();
         basket=AdminOrNot.userbasket;
-        listView=(ListView) view.findViewById(R.id.listview_basket);
-        BasketAdapter productAdapter2=new BasketAdapter(this.getActivity(), basket.listProductQuantity());
-        listView.setAdapter(productAdapter2);
+        DecimalFormat df2 = new DecimalFormat(".##");
+        TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
+        totalPriceView.setText(df2.format(AdminOrNot.userbasket.getTotalPrice()) + " €");
 
-        final TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
-        final DecimalFormat df2 = new DecimalFormat(".##");
-        totalPriceView.setText(df2.format(basket.getTotalPrice()) + " €");
+        listView=(ListView) view.findViewById(R.id.listview_basket);
+        final BasketAdapter basketAdapter=new BasketAdapter(this.getActivity(), basket.listProductQuantity());
+        listView.setAdapter(basketAdapter);
+
+
 
         Button payButton = view.findViewById(R.id.buttonPay);
 
@@ -48,12 +50,13 @@ public class PanierFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // The user just clicked
-                basket.setPaid(Boolean.TRUE);
-                Order newOrder = new Order(basket);
+                AdminOrNot.userbasket.setPaid(Boolean.TRUE);
+                Order newOrder = new Order(AdminOrNot.userbasket);
                 newOrder.saveOrder();
             }
 
         });
+
         return view;
     }
 

@@ -3,6 +3,7 @@ package fr.musee.adr.adrmusee;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Basket {
     // Classe représentant le panier de l'utilisateur
@@ -42,35 +43,28 @@ public class Basket {
     }
 
     // Méthode permettant de récupérer la quantité de chaque produit
-    public ArrayList<ProductQuantity> listProductQuantity(){
-        ArrayList<Product> listTest = this.listProducts;
+    public ArrayList<ProductQuantity> listProductQuantity() {
         ArrayList<ProductQuantity> listProductQuantity = new ArrayList<ProductQuantity>();
-        Product currentProduct = new Product();
-
-        while (listTest.isEmpty() == false){
-            int cpt = 1;
-            currentProduct = listProducts.get(0);
-            int j = 1;
-
-            while (j < listTest.size()){
-
-                if (currentProduct.getName() == listProducts.get(j).getName()){
-                    cpt++;
-                    listProducts.remove(j);
-                }
-                else{
-                    j++;
-                }
-
+        ArrayList<Product> listprod = new ArrayList<Product>();
+        HashMap<Product, Integer> countMap = new HashMap<Product, Integer>();
+        for (Product product : listProducts) {
+            if (!countMap.containsKey(product)) {
+                countMap.put(product, 1);
+            } else {
+                Integer count = countMap.get(product);
+                count = count + 1;
+                countMap.put(product, count);
             }
-
-            listProductQuantity.add(new ProductQuantity(currentProduct, cpt));
-            listTest.remove(0);
         }
-
+        for (Product product : listProducts) {
+            if(!listprod.contains(product)){
+            listProductQuantity.add(new ProductQuantity(product, countMap.get(product)));
+            listprod.add(product);}
+        }
         return listProductQuantity;
-    }
 
+
+    }
 
     /// Getters and setters
 
