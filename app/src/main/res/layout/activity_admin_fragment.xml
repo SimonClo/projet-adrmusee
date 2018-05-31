@@ -19,13 +19,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/SpinnerUsers"
+        <EditText
+            android:id="@+id/AdminUsers"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/linearborder">
 
-        </Spinner>
+        </EditText>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -75,7 +75,7 @@
                 android:text="Retirer le produit" />
             <Button
                 android:id="@+id/AddProduct"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:text="Ajouter un produit" />

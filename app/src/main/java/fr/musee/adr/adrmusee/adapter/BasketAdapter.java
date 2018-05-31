@@ -62,7 +62,7 @@ public class BasketAdapter extends BaseAdapter{
         holder.product.setText(productName);
         holder.quantity.setText("x " + Integer.toString(productQuantity));
         PicassoClient.downloadimg(context,currentProduct.getProduct().getimage(),holder.image);
-
+        final View finalConvertView = convertView;
         holder.delbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,4 +71,5 @@ public class BasketAdapter extends BaseAdapter{
         });
         return convertView;
     }
+
 }

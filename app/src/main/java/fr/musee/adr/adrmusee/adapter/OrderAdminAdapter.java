@@ -89,6 +89,7 @@ public class OrderAdminAdapter extends BaseAdapter {
                 currentOrder.setReady(1L);
                 }else{
                     FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Orders").child(id_command).removeValue();
+                    button_ready.setText("Prête");
                 }
 
             }

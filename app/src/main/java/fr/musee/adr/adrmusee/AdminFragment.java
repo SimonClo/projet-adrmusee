@@ -42,74 +42,57 @@ public class AdminFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_admin_fragment, null);
-        list_users = new ArrayList<>();
-        list_emails = new ArrayList<>();
-        list_isadmin = new ArrayList<>();
+        final EditText Editemail = (EditText) view.findViewById(R.id.AdminUsers);
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabaseUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                String email = Editemail.getText().toString();
+                long isadmin=0L;
+                String user_id="33";
+                String emailadress="";
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String user_id = ds.getKey().toString();
-                    String email = ds.child("email").getValue().toString();
-                    long isadmin = Long.parseLong(ds.child("isadmin").getValue().toString());
-                    if(!list_emails.contains(email)){
-                    list_users.add(user_id);
-                    list_emails.add(email);
-                    list_isadmin.add(isadmin);}
-
+                    if(email.equals(ds.child("email").getValue().toString())){
+                        isadmin = Long.parseLong(ds.child("isadmin").getValue().toString());
+                        user_id = ds.getKey().toString();
+                        emailadress = ds.child("email").getValue().toString();
+                        System.out.println(user_id);
+                    }
                 }
+                final String user_idbis=user_id;
+                final String emailadressbis = emailadress;
+                final long isadminbis = isadmin;
+                System.out.println(user_idbis);
                 AdminButton = (Button) view.findViewById(R.id.ButtonAdmin);
                 RemoveAdminButton = (Button) view.findViewById(R.id.RemoveButtonAdmin);
-                final Spinner SpinnerUsers = (Spinner) view.findViewById(R.id.SpinnerUsers);
-                ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(AdminFragment.this.getActivity(), android.R.layout.simple_spinner_item, list_emails);
-                dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                SpinnerUsers.setAdapter(dataAdapterR);
-
-                SpinnerUsers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        final String Email = String.valueOf(SpinnerUsers.getSelectedItem());
-                        Integer positionItem = (Integer) SpinnerUsers.getSelectedItemPosition();
-                        final String user_id = list_users.get(positionItem).toString();
-                        long isadmin = Long.parseLong(list_isadmin.get(positionItem).toString());
-                        if(isadmin==1){
-                        Toast.makeText(getActivity(),Email + " est admin", Toast.LENGTH_SHORT).show();}else{
-                            Toast.makeText(getActivity(),Email + " n'est pas admin", Toast.LENGTH_SHORT).show();
-                        }
                         AdminButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                mDatabaseUsers.child(user_id).child("isadmin").setValue(1L);
-                                FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id).child("isadmin").setValue(1L);
-                                list_emails.clear();
-                                list_users.clear();
-                                list_isadmin.clear();
-                                Toast.makeText(getActivity(),Email + " est maintenant admin", Toast.LENGTH_SHORT).show();
+                                if(user_idbis=="33"){Toast.makeText(getActivity(), "Cette email n'existe pas dans la base",Toast.LENGTH_SHORT).show();}else {
+                                    if(isadminbis == 1L){Toast.makeText(getActivity(),emailadressbis + " est déjà admin", Toast.LENGTH_SHORT).show();}else{
+                                    mDatabaseUsers.child(user_idbis).child("isadmin").setValue(1L);
+                                    FirebaseDatabase.getInstance().getReference().child("Admin").child(user_idbis).child("isadmin").setValue(1L);
+                                    Toast.makeText(getActivity(), emailadressbis + " est maintenant admin", Toast.LENGTH_SHORT).show();
+                                }}
                             }
                         });
                         RemoveAdminButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                mDatabaseUsers.child(user_id).child("isadmin").setValue(0L);
-                                FirebaseDatabase.getInstance().getReference().child("Admin").child(user_id).child("isadmin").setValue(0L);
-                                list_emails.clear();
-                                list_users.clear();
-                                list_isadmin.clear();
-                                Toast.makeText(getActivity(),Email + " n'est plus admin", Toast.LENGTH_SHORT).show();
+                                if(user_idbis=="33"){Toast.makeText(getActivity(), "Cette email n'existe pas dans la base",Toast.LENGTH_SHORT).show();}else {
+                                    if(isadminbis == 0L){Toast.makeText(getActivity(),emailadressbis + " n'est déjà pas admin", Toast.LENGTH_SHORT).show();}else{
+                                mDatabaseUsers.child(user_idbis).child("isadmin").setValue(0L);
+                                FirebaseDatabase.getInstance().getReference().child("Admin").child(user_idbis).child("isadmin").setValue(0L);
+                                Toast.makeText(getActivity(),emailadressbis + " n'est plus admin", Toast.LENGTH_SHORT).show();
+                            }
+                                }
                             }
                         });
 
                     }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
 
 
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

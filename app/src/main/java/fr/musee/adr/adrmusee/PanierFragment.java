@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -35,13 +36,8 @@ public class PanierFragment extends Fragment {
         user_id= mAuth.getCurrentUser().getUid();
         basket=AdminOrNot.userbasket;
         DecimalFormat df2 = new DecimalFormat(".##");
-        TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
+        final TextView totalPriceView = view.findViewById(R.id.basketTotalPrice);
         totalPriceView.setText(df2.format(AdminOrNot.userbasket.getTotalPrice()) + " €");
-
-        listView=(ListView) view.findViewById(R.id.listview_basket);
-        final BasketAdapter basketAdapter=new BasketAdapter(this.getActivity(), basket.listProductQuantity());
-        listView.setAdapter(basketAdapter);
-
 
 
         Button payButton = view.findViewById(R.id.buttonPay);
@@ -50,15 +46,27 @@ public class PanierFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // The user just clicked
-                AdminOrNot.userbasket.setPaid(Boolean.TRUE);
-                Order newOrder = new Order(AdminOrNot.userbasket);
-                newOrder.saveOrder();
+                if (AdminOrNot.userbasket.getTotalPrice() == 0) {
+                    Toast.makeText(getActivity(), "Le panier est vide", Toast.LENGTH_SHORT).show();
+                } else {
+                    AdminOrNot.userbasket.setPaid(Boolean.TRUE);
+                    Order newOrder = new Order(AdminOrNot.userbasket);
+                    newOrder.saveOrder();
+                    AdminOrNot.userbasket.clearBasket();
+                    final BasketAdapter basketAdapter=new BasketAdapter(getActivity(), AdminOrNot.userbasket.listProductQuantity());
+                    listView.setAdapter(basketAdapter);
+                    basketAdapter.notifyDataSetChanged();
+                    DecimalFormat df2 = new DecimalFormat(".##");
+                    totalPriceView.setText(df2.format(0) + " €");
+                }
             }
 
         });
+        listView=(ListView) view.findViewById(R.id.listview_basket);
+        final BasketAdapter basketAdapter=new BasketAdapter(this.getActivity(), basket.listProductQuantity());
+        listView.setAdapter(basketAdapter);
 
         return view;
     }
-
 }
 
